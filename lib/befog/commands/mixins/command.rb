@@ -1,7 +1,9 @@
+require "optparse"
+
 module Befog
   module Commands
     module Mixins
-      module CLI
+      module Command
         
         def self.included(target)
           target.module_eval do
@@ -52,12 +54,25 @@ module Befog
                 end
                 results
               end
+              
+              def run(arguments)
+                new(arguments).run
+              end
 
             end
             
           end
         end
         
+        attr_reader :options
+        
+        def initialize(arguments)
+          process_arguments(arguments)
+        end
+
+        def process_arguments(arguments)
+          @options = self.class.process_arguments(arguments)
+        end
       end
     end
   end

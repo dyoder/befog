@@ -1,5 +1,3 @@
-require "befog/commands/mixins/CLI"
-
 module Befog
   module Commands
     module Mixins
@@ -9,8 +7,6 @@ module Befog
 
           target.module_eval do
 
-            include Mixins::CLI
-        
             option :path, 
               :short => "-p PATH",
               :long => "--path PATH",

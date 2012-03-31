@@ -4,7 +4,7 @@ module Befog
       module Server
 
         def get_server(id)
-          provider.servers.get(id)
+          compute.servers.get(id)
         end
 
       end

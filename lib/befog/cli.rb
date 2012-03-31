@@ -1,21 +1,38 @@
+require "befog/commands/add"
+require "befog/commands/remove"
+require "befog/commands/start"
+require "befog/commands/stop"
+require "befog/commands/run"
+require "befog/commands/list"
 require "befog/commands/configure"
-require "befog/commands/bank"
 
 module Befog
   module CLI
 
     COMMANDS = {
+      "add" => Befog::Commands::Add,
+      "remove" => Befog::Commands::Remove,
+      "start" => Befog::Commands::Start,
+      "stop" => Befog::Commands::Stop,
+      "run" => Befog::Commands::Run,
+      "list" => Befog::Commands::List,
+      "ls" => Befog::Commands::List,
       "configure" => Befog::Commands::Configure,
-      "config" => Befog::Commands::Configure,
-      "bank" => Befog::Commands::Bank
+      "config" => Befog::Commands::Configure
     }
     
     def self.run(subcommand=nil,*args)
       if command = COMMANDS[subcommand]
         begin
           command.run(args)
+          
+        # TODO: use a befog-specific error class to 
+        # differentiate between expected exceptions
+        # (just display the error message) and un-
+        # expected (display the backtrace)
         rescue => e
           $stderr.puts "befog: #{e.message}"
+          $stderr.puts e.backtrace
           exit(-1)
         end
       else
@@ -31,16 +48,20 @@ module Befog
       $stderr.puts "befog: #{message}"
       $stderr.puts <<-eos
         
-Usage: befog <subcommand> <options>
+Usage: befog <subcommand> [<bank>] [<options>]
 
-The befog command provides command line access to the spire.io API. 
+The befog command allows you to manage your cloud servers from the command line. 
 
 Valid commands:
 
-    configure,   Configure befog, ex: set your AWS key
+    configure,  Configure a bank of servers
     config
-      
-    bank         (De-)provision servers for a bank
+    add         Provision new servers for a bank of servers
+    remove      De-provision servers for a bank of servers
+    start       Start a bank of servers
+    stop        Stop (suspend) a bank of servers
+    run         Run a command on each of a bank of servers
+    list,ls     List all servers with optional bank, region, or provider
     
 You can get more options for any command with --help or -h.
 eos

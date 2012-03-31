@@ -3,43 +3,42 @@ module Befog
     module Mixins
       module Bank
         
-        def self.included(target)
-          
-          def target.run(args) ; self.new(args).run ; end
-
-          target.module_eval do
-            
-            include Mixins::CLI
-        
-            option :bank, 
-              :short => "-b BANK",
-              :long  => "--bank BANK",
-              :required => true,
-              :description => "Bank of servers on which to operate (required)"
-          end
-        end
-        
-        attr_reader :options
-        
-        def initialize(arguments)
-          @options = self.class.process_arguments(arguments)
-        end
-
         def banks
-          region["banks"] ||= {}
+          configuration["banks"] ||= {}
+        end
+        
+        def _bank
+          raise "You must specify a bank to do this" unless options[:bank]
+          banks[options[:bank]] ||= {}
         end
         
         def bank
-          raise "Please set the bank using -b or --bank." unless options[:bank]
-          banks[options[:bank]] ||= []
+          _bank["configuration"] ||= {}
         end
         
-        def run
-          if bank.empty?
+        def servers
+          _bank["servers"] ||= []
+        end
+        
+        def process_arguments(arguments)
+          _bank,*rest = arguments
+          if _bank =~ /^\-/
+            super
+          else
+            super(rest)
+            options[:bank] = _bank
+            bank.each do |key,value|
+              options[key.to_sym] = value
+            end
+          end
+        end
+        
+        def run_for_each_server
+          if servers.empty?
             $stderr.puts "No servers are in bank '#{options[:bank]}'."
             return
           end
-          bank.each do |id|
+          servers.each do |id|
             run_for_server(id)
           end
         end

@@ -4,7 +4,6 @@ module Befog
       module Help
         def self.included(target)
           target.module_eval do
-            include Mixins::CLI
             option :help,
               :short => "-h",
               :long => "--help",
