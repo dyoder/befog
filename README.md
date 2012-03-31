@@ -1,90 +1,48 @@
-Befog is a load testing framework. A given load test consists of four components:
+Befog is a command line utility for cloud management. Or, put another way, it's a CLI wrapper for the `fog` gem.
 
-* Scenarios, which implement a specific type of test
-* Pods, which run scenarios and report back results
-* Overlords, which provide instructions to remote Pods
-* Dashboards, which track and report the results  
+For example, the following command would deploy 3 database servers to the `us-east-1` data center of the Amazon cloud:
 
-## Configuring Your Account
+    befog bank aws add --group database --number 3 --region us-east-1
 
-Befog uses spire.io to coordinate load tests. If you don't already have an account key, you can simply run:
+## Configuring Befog
 
-    befog register --email <email> --password <password>
+In order to do anything interesting, you first need to tell Befog about your cloud accounts. You do this using the `configure` subcommand.
+
+    befog configure aws --key <your-aws-key> --secret <your-aws-secret>
     
-This will create a new account for you and place the key in your .spirerc file. Other befog commands will use this key to send messages.
+## Server Banks
 
-You should also add your Amazon Web Services key if you want to use the automated pod deployment process.
+Beyond the basic configuration for accessing an account, you'll want to set up options for *server banks* (groups of related servers, such a Web servers or database servers) and regions.
 
-    befog configure --aws-key <key>
+For example, the following command sets up the image to be used in the `us-east-1` region for database servers.
 
-## Creating a Scenario
-
-You write scenarios in CoffeeScript
-
-    Scenario = require("befog/scenario")
-    myScenario = new Scenario (context) ->
-      // do some setup
-      context.ready (context) ->
-        context.start()
-        // run your test
-        context.finish()
-
-You can return an error result with `context.halt`, passing the error message.
-
-Add a package.json, put it up on github, and you've got a scenario.
-
-## Pods
-
-Scenarios run within pods. The first thing you need to do is to ... 
-
-*DEPLOY THE PODS!*
-
-This is very simple:
-
-    befog pod add --group myPods --number 10
+    befog configure aws --bank database --image <your-database-image> --region us-east-1
     
-This will create 10 "pods" - virtual machines - that will run your scenario. You can refer to them using the group `myPods`.
+## Provisioning Servers
 
-You can add and remove pods and even deploy them by region. For the moment, let's focus on running a scenario.
+Once you have a configuration set up, you can easily provision new servers:
 
-If you don't want befog to provision your machines for you, you can simply push the befog pod code instead. (You'll need to add your `ssh` key to your befog configuration first.)
+    befog bank aws add --group database --number 3 --region us-east-1
 
-Now you can deploy your scenario to the pods. We specify the group as before with `--group` and a label as well, so we can refer to it later.
+You can also de-provision them just as easily:
 
-    befog pod deploy --scenario http://github.com/your/repo.git 
-      --label test --group myPods
-
-Finally, we're ready to run our test.
-
-## Overlords
-
-The dolpin overlord will actually orchestrate the load test.
-
-    befog overlord -g myPods -s test -i 5 -m 20 -r 3 -d 'testing 1-2-3'
+    befog bank aws remove --group database --number 2 --region us-east-1
     
-This will tell the `myPods` group to run the `test` scenario up to 20 concurrent connections, incrementing by 5 each time (so 5,10,15,20); we'll repeat the test 3 times; and label the results using `testing 1-2-3`.
 
-We can also send custom parameters that will passed into your scenario in the context. For example, you could pass in a `host` parameter like this:
+## Other Features
 
-    befog overlord -g myPods -s test -i 5 -m 20 -r 3 
-      -d 'testing 1-2-3' -p host=http://big.foo.org/
+You can suspend a bank:
 
-That would be accessible within the scenario as `context.parameters.host`.
-
-## Dashboards
-
-Now that you have a scenario running, you'll want to check the results. Anyone can quickly run a local Web server that will act as a dashboard.
-
-    befog dashboard -p 3210
+    befog bank aws stop --group database
     
-If you navigate your browser to:
-  
-    http://localhost:3210/last?group=myPods
+Or start them back up:
+
+    befog bank aws start --group database
     
-you'll see a Web page that will display a nice set of charts for the most recent test run, including a bar graph of latency by concurrency level and geographic location, a similar chart for error rates and standard deviations, and a pie chart for any errors that were returned.
+You can even run a command on every server in a bank:
 
-You can also navigate to:
+    befog bank aws run --command 'apt-get install node'
+    
+## Limitations
 
-    http://localhost:3210/?group=myPods
-
-to get a list of available test results. You can limit the results using the `limit` parameter.
+Befog is currently still under development and only supports basic provisioning options for Amazon EC2.
