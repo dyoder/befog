@@ -4,7 +4,6 @@ module Befog
   
   module Commands
     
-    # This is the befog command
     module Configure
 
       COMMANDS = {

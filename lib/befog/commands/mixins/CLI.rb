@@ -18,6 +18,7 @@ module Befog
               
               def options ; @options||=[] ; end
 
+              # TODO: Support multi-line descriptions?
               def process_arguments(arguments)
                 results = {}; required = [] 
                 parser = OptionParser.new do |parser|
@@ -43,9 +44,11 @@ module Befog
                 end
                 parser.parse!(arguments)
                 required.each do |name|
-                  $stderr.puts "Missing required option '#{name}'" unless results[name]
-                  $stderr.puts parser
-                  exit(-1)
+                  unless results[name]
+                    $stderr.puts "Missing required option '#{name}'"
+                    $stderr.puts parser
+                    exit(-1)
+                  end
                 end
                 results
               end

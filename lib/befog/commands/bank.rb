@@ -1,23 +1,13 @@
-require "befog/commands/bank/add"
-require "befog/commands/bank/remove"
-require "befog/commands/bank/start"
-require "befog/commands/bank/stop"
-require "befog/commands/bank/run"
+require "befog/commands/bank/aws"
 
 module Befog
+  
   module Commands
     
-    # This is the befog command
     module Bank
 
-      include Mixins::Configurable
-
       COMMANDS = {
-        "add" => Befog::Commands::Bank::Add,
-        "remove" => Befog::Commands::Bank::Remove,
-        "start" => Befog::Commands::Bank::Start,
-        "stop" => Befog::Commands::Bank::Stop,
-        "run" => Befog::Commands::Bank::Run
+        "aws" => Befog::Commands::Bank::AWS,
       }
       
       def self.run(args)
@@ -27,6 +17,9 @@ module Befog
             command.run(args)
           rescue => e
             $stderr.puts "befog bank: #{e.message}"
+            $stderr.puts e.backtrace
+
+            
             exit(-1)
           end
         else
@@ -44,16 +37,11 @@ module Befog
         
 Usage: befog bank <subcommand> <options>
 
-Provision and deprovision banks or deploy scenarios to banks. 
+Set befog configuration options. 
 
 Valid commands:
 
-    add         Provision new banks
-    remove      Deprovision banks
-    deploy      Deploy a scenario to banks
-    start       Start the bank listeners
-    stop        Stop the bank listeners
-    run         Run a shell command on all the servers
+    aws         Provision a bank using AWS
     
 You can get more options for any command with --help or -h.
 eos

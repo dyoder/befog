@@ -15,13 +15,13 @@ module Befog
               :short => "-p PATH",
               :long => "--path PATH",
               :default => "~/.befog",
-              :description => "Path to the configuration file you want to use"
+              :description => "Path to the configuration file you want to use (defaults to '~/.befog')"
 
             option :name,
               :short => "-n NAME",
               :long => "--name NAME",
               :default => "default",
-              :description => "The name of this configuration"
+              :description => "The name of this configuration (defaults to 'default')"
 
           end
         end

@@ -45,11 +45,6 @@ module Befog
           :long  => "--group GROUP",
           :description => "The AWS security group to use for new instances"
 
-        option :region,
-          :short => "-r REGION",
-          :long => "--region REGION",
-          :description => "The region (datacenter) for region-specific options"
-
         def self.run(args)
           self.new(args).run
         end

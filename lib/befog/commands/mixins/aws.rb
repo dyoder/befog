@@ -1,7 +1,27 @@
+require "fog"
+Excon.defaults[:ssl_verify_peer] = false
+
 module Befog
   module Commands
     module Mixins
       module AWS
+
+        def self.included(target)
+          
+          def target.run(args) ; self.new(args).run ; end
+
+          target.module_eval do
+            
+            include Mixins::CLI
+        
+            option :region,
+              :short => "-r REGION",
+              :long => "--region REGION",
+              :description => "The region (datacenter) for region-specific options"
+
+          end
+        end
+
 
         def aws
           configuration["aws"] ||= {}
@@ -18,8 +38,8 @@ module Befog
 
         def provider
           @provider ||= Fog::Compute.new(:provider => "AWS", 
-            :aws_access_key_id => Configure::AWS["key"], 
-            :aws_secret_access_key => Configure::AWS["secret"])
+            :aws_access_key_id => aws["key"], 
+            :aws_secret_access_key => aws["secret"])
         end
       
       end

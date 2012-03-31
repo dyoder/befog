@@ -15,7 +15,7 @@ module Befog
               :short => "-b BANK",
               :long  => "--bank BANK",
               :required => true,
-              :description => "Bank of servers on which to operate"
+              :description => "Bank of servers on which to operate (required)"
           end
         end
         
@@ -26,14 +26,17 @@ module Befog
         end
 
         def banks
-          configuration["banks"] ||= {}
+          region["banks"] ||= {}
+        end
+        
+        def bank
+          raise "Please set the bank using -b or --bank." unless options[:bank]
+          banks[options[:bank]] ||= []
         end
         
         def run
-          name = options[:group]
-          bank = (banks[name]||=[])
           if bank.empty?
-            $stderr.puts "No servers are in bank '#{name}'."
+            $stderr.puts "No servers are in bank '#{options[:bank]}'."
             return
           end
           bank.each do |id|
