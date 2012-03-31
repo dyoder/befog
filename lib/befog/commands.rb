@@ -1,0 +1,1 @@
+require "befog/commands/cli"
