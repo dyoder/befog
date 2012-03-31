@@ -2,7 +2,7 @@ Befog is a command line utility for cloud management. Or, put another way, it's 
 
 For example, the following command would deploy 3 database servers to the `us-east-1` data center of the Amazon cloud:
 
-    befog bank aws add --group database --number 3 --region us-east-1
+    befog bank aws add --bank database --number 3 --region us-east-1
 
 ## Configuring Befog
 
@@ -22,11 +22,11 @@ For example, the following command sets up the image to be used in the `us-east-
 
 Once you have a configuration set up, you can easily provision new servers:
 
-    befog bank aws add --group database --number 3 --region us-east-1
+    befog bank aws add --bank database --number 3 --region us-east-1
 
 You can also de-provision them just as easily:
 
-    befog bank aws remove --group database --number 2 --region us-east-1
+    befog bank aws remove --bank database --number 2 --region us-east-1
     
 
 ## Other Features
