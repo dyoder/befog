@@ -33,10 +33,11 @@ module Befog
         end
         servers = []
         count.times do |i|
-          $stdout.puts "Provisioning server #{i+1} ..."
+          $stdout.puts "Provisioning server #{i+1} for bank '#{options[:bank]}'..."
           # TODO: Figure out how to give the server a name
           # TODO: Check for values for all crucial configuration properties
-          servers << compute.servers.create(:region => bank["region"],
+          servers << compute.servers.create(
+              :tags => {"Name" => options[:bank]}, :region => bank["region"],
               :flavor_id => bank["type"], :image_id => bank["image"], 
               :key_name => bank["keypair"])
         end
