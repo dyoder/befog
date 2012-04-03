@@ -1,5 +1,8 @@
 Befog is a command line utility for cloud management. Or, put another way, it's a CLI wrapper for the `fog` gem.
 
+Befog allows you to manage groups or clusters of servers as "banks."  A bank can have one or many servers.  
+Features include the ability to start, stop, add to, remove, or run a command on all servers in a bank.
+
 For example, the following command would add 3 servers to the server bank named `database`:
 
     befog add database --count 3
