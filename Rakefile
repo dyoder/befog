@@ -17,7 +17,7 @@ task :test do
 end
 
 task :gem => :update do
-	sh "gem build spire_io.gemspec"
+	sh "gem build befog.gemspec"
 end
 
 task :update do
@@ -29,5 +29,5 @@ task :package => [:doc, :gem]
 
 desc "build and install the gem"
 task :install => :package do
-	sh "gem install spire_io-#{$version}.gem"
+	sh "gem install befog-#{$version}.gem"
 end
