@@ -27,8 +27,9 @@ module Befog
           regions[options[:region]] ||= {}
         end
 
-        def compute
-          @compute ||= PROVIDERS[options[:provider]].compute(provider)
+        def compute(provider=nil)
+          provider ||= options[:provider]
+          @compute ||= PROVIDERS[provider].compute(providers[provider])
         end
       
       end

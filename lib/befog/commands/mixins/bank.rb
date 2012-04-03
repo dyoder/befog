@@ -22,7 +22,7 @@ module Befog
         
         def process_arguments(arguments)
           _bank,*rest = arguments
-          if _bank =~ /^\-/
+          if _bank =~ /^\-/ or rest.empty?
             super
           else
             super(rest)
