@@ -50,11 +50,16 @@ module Befog
         
 Usage: befog <subcommand> [<bank>] [<options>]
 
-The befog command allows you to manage your cloud servers from the command line. 
+The befog command allows you to manage your cloud servers from the command line.
+You reference these sets of servers as banks.  A bank can have one or many servers.
+
+Example: befog add web-servers --count 3
+
+Adds 3 servers to the bank "web-servers"
 
 Valid commands:
 
-    configure,  Configure a bank of servers
+    configure   Configure a bank of servers
     config
     add         Provision new servers for a bank of servers
     remove      De-provision servers for a bank of servers
