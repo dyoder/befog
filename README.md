@@ -3,10 +3,10 @@ Befog is a command line utility for cloud management. Or, put another way, it's 
 Befog allows you to manage groups or clusters of servers as "banks."  A bank can have one or many servers.  
 Features include the ability to start, stop, add to, remove, or run a command on all servers in a bank.
 
-For example, the following command would add 3 servers to the server bank named `database`:
+For example, the following command would add 3 servers to the server bank named `web-prod`:
 
-    befog add database --count 3
-    
+    befog add web-prod --count 3
+
 Befog provides some basic help whenever a command is invoked with no arguments. You can start with this:
 
     befog
@@ -31,10 +31,10 @@ In order to do anything interesting, you first need to tell Befog about your clo
         
 You also need to set up bank-specific configurations.
 
-For example, the following command sets up the provider, region, image, and keypair to be used with the server bank named `database`:
+For example, the following command sets up the provider, region, image, and keypair to be used with the server bank named `web-prod`:
 
-    befog configure database --provider aws \
-      --region us-east-1 --image <your-database-image> \
+    befog configure web-prod --provider aws \
+      --region us-east-1 --image <your-aws-image> \
       --keypair <your-keypair>
     
 To see the full list of configuration options, just type:
@@ -47,17 +47,17 @@ You generally don't need to set these up very often - just when setting up a new
 
 Once you have a configuration set up, you can easily provision new servers:
 
-    befog add database --count 3
+    befog add web-prod --count 3
 
 You can also de-provision them just as easily:
 
-    befog remove database --count 3
+    befog remove web-prod --count 3
     
 ## Multiple Configurations
 
-Sometimes you want one set of servers for a test environment and another for production or a beta environment. You can use the `--environment` option to handle different environments. For example, let's start up the database bank of our `test` environment:
+Sometimes you want one set of servers for a test environment and another for production or a beta environment. You can use the `--environment` option to handle different environments. For example, let's start up the `web-prod` bank of our `test` environment:
 
-    befog start database --e test
+    befog start web-prod --e test
     
 Each environment must be configured separately. Again, once configured, you can typically use that configuration over and over.
 
@@ -69,19 +69,19 @@ Finally, you can simply edit configurations directly if you want, since they are
 
 You can suspend a bank:
 
-    befog stop database
+    befog stop web-prod
     
 Or start them back up:
 
-    befog start database
+    befog start web-prod
     
 You can even run a command on every server in a bank:
 
-    befog run database --command 'apt-get install redis'
+    befog run web-prod --command 'apt-get install redis'
     
 You can get a list of all the servers associated with a bank:
 
-    befog ls database
+    befog ls web-prod
     
 or with a specific-provider:
 
