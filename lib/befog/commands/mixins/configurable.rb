@@ -36,6 +36,7 @@ module Befog
 
         def save
           File.open(File.expand_path(configuration_path),"w") { |f| YAML.dump(_configuration,f) }
+          $stdout.puts "Configuration written to: #{configuration_path}"
         end
               
 
