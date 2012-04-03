@@ -37,7 +37,8 @@ module Befog
           $stderr.puts "befog: #{e.message}"
           exit(-1)
         rescue => e # uh-oh
-          $stderr.puts "Unexpected error: #{e.message}"
+          $stderr.puts "Unexpected error"
+          $stderr.puts "#{e.class}: #{e.message}"
           $stderr.puts e.backtrace
           exit(-1)
         end

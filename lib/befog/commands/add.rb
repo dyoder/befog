@@ -39,6 +39,7 @@ module Befog
           servers << compute.servers.create(
               :tags => {"Name" => options[:bank]}, :region => bank["region"],
               :flavor_id => bank["type"], :image_id => bank["image"], 
+              :security_group_ids => [options[:group]||"default"],
               :key_name => bank["keypair"])
         end
         $stdout.puts "This may take a few minutes ..."
