@@ -7,7 +7,10 @@ require "befog/commands/list"
 require "befog/commands/configure"
 
 module Befog
+  
   module CLI
+    
+    class Error < RuntimeError ; end
 
     COMMANDS = {
       "add" => Befog::Commands::Add,
@@ -30,8 +33,11 @@ module Befog
         # differentiate between expected exceptions
         # (just display the error message) and un-
         # expected (display the backtrace)
-        rescue => e
+        rescue Befog::CLI::Error => e
           $stderr.puts "befog: #{e.message}"
+          exit(-1)
+        rescue => e # uh-oh
+          $stderr.puts "Unexpected error: #{e.message}"
           $stderr.puts e.backtrace
           exit(-1)
         end

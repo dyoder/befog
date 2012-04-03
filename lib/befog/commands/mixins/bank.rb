@@ -8,7 +8,7 @@ module Befog
         end
         
         def _bank
-          raise "You must specify a bank to do this" unless options[:bank]
+          raise Befog::CLI::Error.new("You must specify a bank to do this") unless options[:bank]
           banks[options[:bank]] ||= {}
         end
         

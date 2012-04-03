@@ -14,7 +14,7 @@ module Befog
         end
         
         def provider
-          raise "You must specify a provider (with --provider or -q) to do this" unless options[:provider]
+          raise Befog::CLI::Error.new("You must specify a provider (with --provider or -q) to do this") unless options[:provider]
           providers[options[:provider]] ||= {}
         end
       
@@ -23,7 +23,7 @@ module Befog
         end
 
         def region
-          raise "Please set the region using -r or --region." unless options[:region]
+          raise Befog::CLI::Error.new("Please set the region using -r or --region.") unless options[:region]
           regions[options[:region]] ||= {}
         end
 
