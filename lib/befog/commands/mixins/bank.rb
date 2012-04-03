@@ -22,13 +22,13 @@ module Befog
         
         def process_arguments(arguments)
           _bank,*rest = arguments
-          if _bank =~ /^\-/ or rest.empty?
+          if _bank.nil? or _bank =~ /^\-/
             super
           else
             super(rest)
             options[:bank] = _bank
             bank.each do |key,value|
-              options[key.to_sym] = value
+              options[key.to_sym] ||= value
             end
           end
         end
