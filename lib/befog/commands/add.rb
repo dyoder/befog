@@ -24,9 +24,7 @@ module Befog
         :long  => "--count COUNT",
         :required => true,
         :description => "The number of machines to provision"
-        
-      # TODO: Add support for machine type
-    
+            
       def run        
         count = options[:count].to_i
         if count <= 0
@@ -37,8 +35,10 @@ module Befog
         count.times do |i|
           $stdout.puts "Provisioning server #{i+1} ..."
           # TODO: Figure out how to give the server a name
-          servers << compute.servers.create(:image_id => bank["image"], 
-              :key_name => bank["keypair"], :region => bank["region"])
+          # TODO: Check for values for all crucial configuration properties
+          servers << compute.servers.create(:region => bank["region"],
+              :flavor_id => bank["type"], :image_id => bank["image"], 
+              :key_name => bank["keypair"])
         end
         $stdout.puts "This may take a few minutes ..."
         servers.each do |server|

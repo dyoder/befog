@@ -53,6 +53,11 @@ module Befog
         :short => "-g GROUP",
         :long  => "--group GROUP",
         :description => "The security group to use for new instances"
+    
+      option :type, 
+        :short => "-t TYPE",
+        :long  => "--type TYPE",
+        :description => "The number of machines to provision"
 
       def self.run(args)
         self.new(args).run
@@ -68,7 +73,7 @@ module Befog
           provider[key] = options[_key] if options[_key]
         end
         if options[:bank]
-          %w( provider region image keypair group ).each do |key|
+          %w( provider region image keypair group type ).each do |key|
             _key = key.to_sym
             bank[key] = options[_key] if options[_key]
           end
