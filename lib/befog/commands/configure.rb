@@ -72,9 +72,12 @@ module Befog
           _key = key.to_sym
           provider[key] = options[_key] if options[_key]
         end
-        %w( provider region image keypair group type ).each do |key|
+        %w( region image keypair group type ).each do |key|
           _key = key.to_sym
           bank[key] = options[_key] if options[_key]
+        end          
+        if options[:bank] and options[:provider]
+          bank["provider"] = options[:provider]
         end
         save
       end
