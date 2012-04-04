@@ -67,7 +67,7 @@ module Befog
         banks[name]["servers"].each do |id|
           c = compute(configuration["provider"])
           s = c.servers.get(id)
-          out << "- #{s.flavor_id} #{s.dns_name} #{s.state}"
+          out << "- #{id} #{s.flavor_id} #{s.dns_name} #{s.state}"
         end
         $stdout.puts out.join("\n#{indent}")
       end
