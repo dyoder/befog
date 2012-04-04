@@ -33,11 +33,16 @@ module Befog
       end
 
       def run_for_server(id)
-        address = get_server(id).public_ip_address
-        $stdout.puts "Running command '#{options[:command]}' for #{address} ..."
-        result = Fog::SSH.new(address, "root").run(options[:command]).first
-        $stdout.puts "[#{address}: STDOUT] #{result.stdout}"
-        $stderr.puts "[#{address}: STDERR] #{result.stderr}"
+        server = get_server(id)
+        if server.state == "running"
+          address = server.public_ip_address
+          $stdout.puts "Running command '#{options[:command]}' for #{address} ..."
+          result = Fog::SSH.new(address, "root").run(options[:command]).first
+          $stdout.puts "[#{address}: STDOUT] #{result.stdout}"
+          $stderr.puts "[#{address}: STDERR] #{result.stderr}"
+        else
+          $stdout.puts "Server #{id} isn't running - skipping"
+        end
       end
 
     end

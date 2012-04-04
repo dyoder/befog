@@ -20,13 +20,20 @@ module Befog
       include Mixins::Help
 
       command "befog stop <bank>",
-        :default_to_help => true
+        :default_to_help => false
 
       def run
         run_for_each_server
       end
 
       def run_for_server(id)
+        server = get_server(id)
+        if server.state == "running"
+          $stdout.puts "Stopping server #{id} ..."
+          server.stop
+        else
+          $stdout.puts "Server #{id} is not (yet) running"
+        end
       end
 
     end
