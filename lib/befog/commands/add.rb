@@ -24,33 +24,58 @@ module Befog
         :long  => "--count COUNT",
         :required => true,
         :description => "The number of machines to provision"
-            
+
+      option :type, 
+        :short => "-t TYPE",
+        :long  => "--type TYPE",
+        :description => "The number of machines to provision"
+
       def run        
-        count = options[:count].to_i
-        if count <= 0
-          $stderr.puts "Number must be an integer greater than 0."
-          return
-        end
+        validate_arguments
+        provision_servers(count)
+      end
+      
+      def provision_servers(count)
         servers = []
         count.times do |i|
-          $stdout.puts "Provisioning server #{i+1} for bank '#{options[:bank]}'..."
-          # TODO: Figure out how to give the server a name
-          # TODO: Check for values for all crucial configuration properties
-          servers << compute.servers.create(
-              :tags => {"Name" => options[:bank]}, :region => bank["region"],
-              :flavor_id => bank["type"], :image_id => bank["image"], 
-              :security_group_ids => [options[:group]||"default"],
-              :key_name => bank["keypair"])
+          log "Provisioning server #{i+1} for bank '#{options[:bank]}'..."
+          servers << provision_server
         end
-        $stdout.puts "This may take a few minutes ..."
+        log "This may take a few minutes ..."
         servers.each do |server|
-          server.wait_for { $stdout.puts "Still working ..." ; ready? }
-          self.servers << server.id
+          Thread.new do
+            server.wait_for { $stdout.putc "." ; ready? }
+            self.servers << server.id
+          end
         end
         servers.each do |server|
-          $stdout.puts "Server #{server.id} is ready at #{server.dns_name}."
+          log "Server #{server.id} is ready at #{server.dns_name}."
         end
         save
+      end
+      
+      def provision_server
+        compute.servers.create(
+            :tags => {"Name" => options[:bank]}, :region => bank["region"],
+            :flavor_id => bank["type"], :image_id => bank["image"], 
+            :security_group_ids => [options[:group]||"default"],
+            :key_name => bank["keypair"])
+      end
+      
+      def validate_arguments
+        count = options[:count].to_i
+        if count <= 0
+          raise CLI::Error.new "Count must be an integer greater than 0."
+        end
+        required options[:bank], "You must specify the bank for which you want to provision servers"
+        required bank["region"], "Bank `#{options[:bank]}` doesn't have a region specified. Use `befog config #{options[:bank]} --region <region>` to configure one."
+        required bank["image"], "Bank `#{options[:bank]}` doesn't have an image specified. Use `befog config #{options[:bank]} --image <image>` to configure one."
+        required bank["keypair"], "Bank `#{options[:bank]}` doesn't have a keypair specified. Use `befog config #{options[:bank]} --keypair <keypair>` to configure one."
+        warning bank["type"], <<-EOS
+Bank `#{options[:bank]}` doesn't have an instance type specified, using default. 
+Use `befog config #{options[:bank]} --type <type>` to configure one, or use the
+'--type' flag with this command.
+EOS
       end
     end
   end

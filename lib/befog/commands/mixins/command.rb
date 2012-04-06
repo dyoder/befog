@@ -73,6 +73,18 @@ module Befog
         def process_arguments(arguments)
           @options = self.class.process_arguments(arguments)
         end
+        
+        def required(value,message)
+          raise CLI::Error.new(message) if value.nil?
+        end
+        
+        def warning(value,message)
+          log message if value.nil?
+        end
+        
+        def log(message)
+          $stdout.puts(message)
+        end
       end
     end
   end

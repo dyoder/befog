@@ -12,4 +12,4 @@ $:.unshift File.expand_path("../../lib", bin_file)
 
 require "befog"
 
-Befog::CLI.run(*ARGV)
+Befog::CLI.run(ARGV)

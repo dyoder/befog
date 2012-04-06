@@ -11,10 +11,12 @@ module Befog
   module CLI
     
     class Error < RuntimeError ; end
-
+    
+    
     COMMANDS = {
       "add" => Befog::Commands::Add,
       "remove" => Befog::Commands::Remove,
+      "rm" => Befog::Commands::Remove,
       "start" => Befog::Commands::Start,
       "stop" => Befog::Commands::Stop,
       "run" => Befog::Commands::Run,
@@ -24,17 +26,13 @@ module Befog
       "config" => Befog::Commands::Configure
     }
     
-    def self.run(subcommand=nil,*args)
-      if command = COMMANDS[subcommand]
+    def self.run(args)
+      subcommand = args.pop
+      if subcommand && (command = COMMANDS[subcommand])
         begin
-          command.run(args)
-          
-        # TODO: use a befog-specific error class to 
-        # differentiate between expected exceptions
-        # (just display the error message) and un-
-        # expected (display the backtrace)
+          command.run(rest)
         rescue Befog::CLI::Error => e
-          $stderr.puts "befog: #{e.message}"
+          $stderr.puts "befog #{command.name}: #{e.message}"
           exit(-1)
         rescue => e # uh-oh
           $stderr.puts "Unexpected error"
@@ -42,17 +40,15 @@ module Befog
           $stderr.puts e.backtrace
           exit(-1)
         end
+      elsif subcommand
+        usage "'#{subcommand}' is not a supported command"
       else
-        if subcommand
-          usage "'#{subcommand}' is not a supported command"
-        else
-          usage "No subcommand provided."
-        end
+        usage
       end
     end
     
-    def self.usage(message)
-      $stderr.puts "befog: #{message}"
+    def self.usage(message=nil)
+      $stderr.puts "befog: #{message}" if message
       $stderr.puts <<-eos
         
 Usage: befog <subcommand> [<bank>] [<options>]
@@ -66,14 +62,13 @@ Adds 3 servers to the bank "web-servers"
 
 Valid commands:
 
-    configure   Configure a bank of servers
-    config
-    add         Provision new servers for a bank of servers
-    remove      De-provision servers for a bank of servers
-    start       Start a bank of servers
-    stop        Stop (suspend) a bank of servers
-    run         Run a command on each of a bank of servers
-    list,ls     List all servers with optional bank, region, or provider
+    configure, config   Configure a bank of servers
+    add                 Provision new servers for a bank of servers
+    remove, rm          De-provision servers
+    start               Start servers
+    stop                Stop (suspend) servers
+    run                 Run a command on each of a bank of servers
+    list, ls            List servers
     
 You can get more options for any command with --help or -h.
 eos
