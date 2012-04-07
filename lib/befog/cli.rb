@@ -26,13 +26,13 @@ module Befog
       "config" => Befog::Commands::Configure
     }
     
-    def self.run(args)
-      subcommand = args.pop
+    def self.run(arguments)
+      subcommand = arguments.shift
       if subcommand && (command = COMMANDS[subcommand])
         begin
-          command.run(rest)
+          command.run(arguments)
         rescue Befog::CLI::Error => e
-          $stderr.puts "befog #{command.name}: #{e.message}"
+          $stderr.puts "befog #{command.specification.name}: #{e.message}"
           exit(-1)
         rescue => e # uh-oh
           $stderr.puts "Unexpected error"

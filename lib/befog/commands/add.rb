@@ -16,7 +16,7 @@ module Befog
       include Mixins::Help
   
 
-      command "befog add <bank>",
+      command "add",
         :default_to_help => true
 
       option :count, 
@@ -32,22 +32,24 @@ module Befog
 
       def run        
         validate_arguments
-        provision_servers(count)
+        provision_servers(options[:count])
       end
       
       def provision_servers(count)
-        servers = []
+        servers = []; threads = []
         count.times do |i|
           log "Provisioning server #{i+1} for bank '#{options[:bank]}'..."
           servers << provision_server
         end
-        log "This may take a few minutes ..."
+        $stdout.print "This may take a few minutes .."
         servers.each do |server|
-          Thread.new do
-            server.wait_for { $stdout.putc "." ; ready? }
+          threads << Thread.new do
+            server.wait_for { $stdout.print "." ; $stdout.flush; ready? }
             self.servers << server.id
           end
         end
+        sleep 1 while threads.any? { |t| t.alive? } 
+        $stdout.print "\n"
         servers.each do |server|
           log "Server #{server.id} is ready at #{server.dns_name}."
         end
@@ -63,14 +65,27 @@ module Befog
       end
       
       def validate_arguments
-        count = options[:count].to_i
+        count = options[:count] = options[:count].to_i
         if count <= 0
           raise CLI::Error.new "Count must be an integer greater than 0."
         end
         required options[:bank], "You must specify the bank for which you want to provision servers"
-        required bank["region"], "Bank `#{options[:bank]}` doesn't have a region specified. Use `befog config #{options[:bank]} --region <region>` to configure one."
-        required bank["image"], "Bank `#{options[:bank]}` doesn't have an image specified. Use `befog config #{options[:bank]} --image <image>` to configure one."
-        required bank["keypair"], "Bank `#{options[:bank]}` doesn't have a keypair specified. Use `befog config #{options[:bank]} --keypair <keypair>` to configure one."
+        required bank["provider"], <<-EOS
+Bank `#{options[:bank]}` doesn't have a provider specified. 
+Use `befog config #{options[:bank]} --provider <provider>` to configure one.
+EOS
+        required bank["region"], <<-EOS
+Bank `#{options[:bank]}` doesn't have a region specified. 
+Use `befog config #{options[:bank]} --region <region>` to configure one.
+EOS
+        required bank["image"], <<-EOS
+Bank `#{options[:bank]}` doesn't have an image specified. 
+Use `befog config #{options[:bank]} --image <image>` to configure one.
+EOS
+        required bank["keypair"], <<-EOS
+Bank `#{options[:bank]}` doesn't have a keypair specified. 
+Use `befog config #{options[:bank]} --keypair <keypair>` to configure one.
+EOS
         warning bank["type"], <<-EOS
 Bank `#{options[:bank]}` doesn't have an instance type specified, using default. 
 Use `befog config #{options[:bank]} --type <type>` to configure one, or use the

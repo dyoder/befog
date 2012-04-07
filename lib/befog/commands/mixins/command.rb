@@ -14,6 +14,8 @@ module Befog
                 @command = (Struct.new(:name,:descriptor)).new(name,descriptor)
               end
               
+              def specification ; @command ; end
+              
               def option(name,descriptor)
                 options << [name,descriptor]
               end
