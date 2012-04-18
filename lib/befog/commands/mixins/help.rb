@@ -5,10 +5,8 @@ module Befog
         def self.included(target)
           target.module_eval do
             option :help,
-              :short => "-h",
-              :long => "--help",
-              :description => "Show this message",
-              :help => true
+              :short => :h,
+              :description => "Show this message"
           end
         end
         

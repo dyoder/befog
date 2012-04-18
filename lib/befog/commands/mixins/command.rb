@@ -1,4 +1,4 @@
-require "optparse"
+require 'ostruct'
 
 module Befog
   module Commands
@@ -10,11 +10,9 @@ module Befog
             
             class << self 
               
-              def command(name,descriptor)
-                @command = (Struct.new(:name,:descriptor)).new(name,descriptor)
+              def command(descriptor=nil)
+                descriptor ? (@command = OpenStruct.new(descriptor)) : @command
               end
-              
-              def specification ; @command ; end
               
               def option(name,descriptor)
                 options << [name,descriptor]
@@ -23,42 +21,37 @@ module Befog
               def options ; @options||=[] ; end
 
               # TODO: Support multi-line descriptions?
-              def process_arguments(arguments)
-                results = {}; required = [] 
-                parser = OptionParser.new do |parser|
-                  parser.banner = "Usage: #{@command.name} [options]"
-                  options.each do |name,descriptor|
-                    if descriptor[:help]
-                      parser.on_tail(*descriptor.values_at(:short,:long,:description)) do |value|
-                        $stdout.puts parser
-                        exit(0)
-                      end
-                    else
-                      results[name] = descriptor[:default] if descriptor[:default]
-                      required << name if descriptor[:required]
-                      parser.on(*descriptor.values_at(:short,:long,:description)) do |value|
-                        results[name] = value
-                      end
-                    end
-                  end
-                end
-                if @command.descriptor[:default_to_help] and arguments.empty?
-                  $stdout.puts parser
+              def process_options(_options)
+                if (command.default_to_help and _options.empty?) or _options[:help]
+                  usage
                   exit(0)
                 end
-                parser.parse!(arguments)
-                required.each do |name|
-                  unless results[name]
-                    $stderr.puts "Missing required option '#{name}'"
-                    $stderr.puts parser
-                    exit(-1)
+                options.each do |name,descriptor|
+                  short, required, default, type = descriptor.values_at(:short,:required,:default,:type)
+                  _options[name] ||= (_options[short]||default)
+                  _options.delete(short)
+                  if required and not _options[name]
+                    raise CLI::Error.new("Missing required option --#{long}")
                   end
                 end
-                results
+                # TODO: add type conversion
+                return _options
               end
               
-              def run(arguments)
-                new(arguments).run
+              def usage
+                $stderr.puts command.usage
+                usage = []
+                options.each do |name,descriptor|
+                  short, required, default, description = descriptor.values_at(:short,:required,:default,:description)
+                  required = (required ? "(required) " : "")
+                  default = (default ? "(default: #{default}) " : "")
+                  usage << "\t%-3s %-20s\t%-40s" % ["-#{short},", "--#{name} #{name.to_s.upcase}", "#{description} #{required}#{default}"]
+                end
+                $stderr.puts *(usage.sort)
+              end
+              
+              def run(options)
+                new(options).run
               end
 
             end
@@ -68,20 +61,12 @@ module Befog
         
         attr_reader :options
         
-        def initialize(arguments)
-          process_arguments(arguments)
-        end
-
-        def process_arguments(arguments)
-          @options = self.class.process_arguments(arguments)
+        def initialize(_options)
+          @options = self.class.process_options(_options)
         end
         
-        def required(value,message)
-          raise CLI::Error.new(message) if value.nil?
-        end
-        
-        def warning(value,message)
-          log message if value.nil?
+        def error(message)
+          raise CLI::Error.new(message)
         end
         
         def log(message)

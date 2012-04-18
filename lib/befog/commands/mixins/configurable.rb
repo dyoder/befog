@@ -8,16 +8,12 @@ module Befog
           target.module_eval do
 
             option :path, 
-              :short => "-p PATH",
-              :long => "--path PATH",
-              :default => "~/.befog",
-              :description => "Path to the configuration file you want to use (defaults to '~/.befog')"
+              :short => :p, :default => "~/.befog",
+              :description => "Path to the configuration file"
 
             option :name,
-              :short => "-n NAME",
-              :long => "--name NAME",
-              :default => "default",
-              :description => "The name of this configuration (defaults to 'default')"
+              :short => :n, :default => "default",
+              :description => "The name of this configuration"
 
           end
         end
@@ -31,7 +27,11 @@ module Befog
         end
         
         def configuration
-          _configuration[options[:name]] ||= {}
+          _configuration[configuration_name] ||= {}
+        end
+        
+        def configuration_name
+          options[:name]
         end
 
         def save

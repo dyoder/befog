@@ -1,9 +1,8 @@
 require "fog"
 require "befog/commands/mixins/command"
 require "befog/commands/mixins/configurable"
-require "befog/commands/mixins/bank"
-require "befog/commands/mixins/provider"
-require "befog/commands/mixins/server"
+require "befog/commands/mixins/scope"
+require "befog/commands/mixins/safely"
 require "befog/commands/mixins/help"
 
 module Befog
@@ -13,63 +12,64 @@ module Befog
   
       include Mixins::Command
       include Mixins::Configurable
-      include Mixins::Bank
-      include Mixins::Provider
-      include Mixins::Server
+      include Mixins::Scope
+      include Mixins::Safely
       include Mixins::Help
 
-      command "befog list [<bank>]",
+      command :name => :list,
+        :usage => "befog list [<bank>] [<options>]",
         :default_to_help => false
 
       option :provider,
-        :short => "-q PROVIDER",
-        :long => "--provider PROVIDER",
-        :description => "The provider provisioning a bank of servers"
+        :short => :q,
+        :description => "List all servers from this provider"
+
+      option :region,
+        :short => :r,
+        :description => "List all servers from this region"
+
+      option :image, 
+        :short => :i,
+        :description => "List all servers using this image"
+
+      option :keypair, 
+        :short => :x,
+        :description => "List all servers using this keypair"
+
+      option :group, 
+        :short => :g,
+        :description => "List all servers using this group"
+
+      option :type, 
+        :short => :t,
+        :description => "List all servers of this type (flavor)"
 
 
       def run
-        if options[:bank]
-          list_bank(options[:bank])
-        elsif options[:provider]
-          list_provider(options[:provider])
+        if bank? 
+          list_bank
         else
           list_all
         end
       end
       
       def list_all
-        $stdout.puts "All Servers"
-        banks.keys.select do |name|
-          list_bank(name)
+        banks.keys.each do |name|
+          options[:bank] = name
+          list_bank if ((provider? and (bank["provider"] == provider_name)) and
+            (region? and (bank["region"] == region)) and
+            (image? and (bank["image"] == image)) and
+            (security_group? and (bank["group"] == security_group)) and
+            (flavor? and (bank["type"] == flavor)))
         end
+          
       end
       
-      def list_provider(provider,indent="")
-        $stdout.puts "#{indent}- Provider: #{provider}"
-        indent += "  "
-        banks.select do |name,b|
-          if b["configuration"] and b["configuration"]["provider"] == provider
-            list_bank(name,indent)
-          end
+      def list_bank
+        servers.each do |id|
+          server = compute.servers.get(id)
+          log "%-15s %-15s %-15s %-45s %-10s" % [id,server.flavor_id,server.tags["Name"],(server.dns_name||"-"),server.state]
         end
-      end
-      
-      def list_bank(name, indent="")
-        out = []
-        out << "#{indent}- Bank: #{name}"
-        indent += "  "
-        configuration = banks[name]["configuration"]
-        out += %w( provider region image keypair type ).reduce([]) do |rval,key|        
-          rval << "#{key}: #{configuration[key]}" unless configuration[key].nil?
-          rval
-        end
-        out << "instances:"
-        banks[name]["servers"].each do |id|
-          c = compute(configuration["provider"])
-          s = c.servers.get(id)
-          out << "- #{id} #{s.flavor_id} #{s.dns_name} #{s.state}"
-        end
-        $stdout.puts out.join("\n#{indent}")
       end
 
     end

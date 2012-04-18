@@ -1,7 +1,7 @@
 require "befog/commands/mixins/command"
 require "befog/commands/mixins/configurable"
-require "befog/commands/mixins/provider"
-require "befog/commands/mixins/bank"
+require "befog/commands/mixins/scope"
+require "befog/commands/mixins/safely"
 require "befog/commands/mixins/help"
 
 module Befog
@@ -12,74 +12,61 @@ module Befog
     
       include Mixins::Command
       include Mixins::Configurable
-      include Mixins::Provider
-      include Mixins::Bank
+      include Mixins::Scope
+      include Mixins::Safely
       include Mixins::Help
       
-      command "befog configure [<bank>]",
+      command :name => :configure,
+        :usage => "befog configure [<bank>] [<options>]",
         :default_to_help => true
         
       option :key, 
-        :short => "-k KEY",
-        :long  => "--key KEY",
+        :short => :k,
         :description => "Your account key"
 
       option :secret, 
-        :short => "-s SECRET",
-        :long  => "--secret SECRET",
+        :short => :s,
         :description => "Your account secret"
       
       option :provider,
-        :short => "-q PROVIDER",
-        :long => "--provider PROVIDER",
+        :short => :q,
         :description => "The provider provisioning a bank of servers"
 
       option :region,
-        :short => "-r REGION",
-        :long => "--region REGION",
+        :short => :r,
         :description => "The region (datacenter) where a bank is provisioned"
 
       option :image, 
-        :short => "-i IMAGE",
-        :long  => "--image IMAGE",
+        :short => :i,
         :description => "The image for provisioning pods"
     
       option :keypair, 
-        :short => "-x KEYPAIR",
-        :long  => "--keypair KEYPAIR",
+        :short => :x,
         :description => "The keypair name to use with SSH"
 
       option :group, 
-        :short => "-g GROUP",
-        :long  => "--group GROUP",
+        :short => :g,
         :description => "The security group to use for new instances"
     
       option :type, 
-        :short => "-t TYPE",
-        :long  => "--type TYPE",
+        :short => :t,
         :description => "The number of machines to provision"
 
-      def self.run(args)
-        self.new(args).run
-      end
-      
-      def initialize(arguments)
-        process_arguments(arguments)
-      end
-      
       def run
-        %w( key secret ).each do |key|
-          _key = key.to_sym
-          provider[key] = options[_key] if options[_key]
+        safely do
+          %w( key secret ).each do |key|
+            _key = key.to_sym
+            provider[key] = options[_key] if options[_key]
+          end
+          %w( region image keypair group type ).each do |key|
+            _key = key.to_sym
+            bank[key] = options[_key] if options[_key]
+          end          
+          if options[:bank] and options[:provider]
+            bank["provider"] = options[:provider]
+          end
+          save
         end
-        %w( region image keypair group type ).each do |key|
-          _key = key.to_sym
-          bank[key] = options[_key] if options[_key]
-        end          
-        if options[:bank] and options[:provider]
-          bank["provider"] = options[:provider]
-        end
-        save
       end
     end
   end

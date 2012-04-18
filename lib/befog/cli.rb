@@ -5,6 +5,7 @@ require "befog/commands/stop"
 require "befog/commands/run"
 require "befog/commands/list"
 require "befog/commands/configure"
+require "befog/commands/mixins/safely"
 
 module Befog
   
@@ -12,34 +13,45 @@ module Befog
     
     class Error < RuntimeError ; end
     
+    extend Befog::Commands::Mixins::Safely
     
     COMMANDS = {
       "add" => Befog::Commands::Add,
-      "remove" => Befog::Commands::Remove,
-      "rm" => Befog::Commands::Remove,
-      "start" => Befog::Commands::Start,
-      "stop" => Befog::Commands::Stop,
-      "run" => Befog::Commands::Run,
+      # "remove" => Befog::Commands::Remove,
+      # "rm" => Befog::Commands::Remove,
+      # "start" => Befog::Commands::Start,
+      # "stop" => Befog::Commands::Stop,
+      # "run" => Befog::Commands::Run,
       "list" => Befog::Commands::List,
       "ls" => Befog::Commands::List,
       "configure" => Befog::Commands::Configure,
       "config" => Befog::Commands::Configure
     }
     
+    def self.parse(arguments)
+      options = {}
+      key = :bank
+      while not arguments.empty?
+        argument = arguments.shift
+        flag, short, long = /^(?:\-(\w)|\-\-(\w+))$/.match(argument).to_a
+        if flag
+          key = (short or long).to_sym
+          options[key] = true
+        else
+          case options[key]
+          when Array then options[key] << argument
+          when String then options[key] = [ options[key], argument ]
+          when true, nil then options[key] = argument
+          end
+        end
+      end
+      return options
+    end
+    
     def self.run(arguments)
       subcommand = arguments.shift
       if subcommand && (command = COMMANDS[subcommand])
-        begin
-          command.run(arguments)
-        rescue Befog::CLI::Error => e
-          $stderr.puts "befog #{command.specification.name}: #{e.message}"
-          exit(-1)
-        rescue => e # uh-oh
-          $stderr.puts "Unexpected error"
-          $stderr.puts "#{e.class}: #{e.message}"
-          $stderr.puts e.backtrace
-          exit(-1)
-        end
+        command.run(CLI.parse(arguments))
       elsif subcommand
         usage "'#{subcommand}' is not a supported command"
       else

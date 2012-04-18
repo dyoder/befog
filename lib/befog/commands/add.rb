@@ -1,7 +1,7 @@
 require "befog/commands/mixins/command"
 require "befog/commands/mixins/configurable"
-require "befog/commands/mixins/bank"
-require "befog/commands/mixins/provider"
+require "befog/commands/mixins/scope"
+require "befog/commands/mixins/safely"
 require "befog/commands/mixins/help"
 
 module Befog
@@ -11,46 +11,46 @@ module Befog
   
       include Mixins::Command
       include Mixins::Configurable
-      include Mixins::Bank
-      include Mixins::Provider
+      include Mixins::Scope
       include Mixins::Help
+      include Mixins::Safely
   
 
-      command "add",
+      command :name => :add,
+        :usage => "befog add <bank> [<options>]",
         :default_to_help => true
 
       option :count, 
-        :short => "-c COUNT",
-        :long  => "--count COUNT",
+        :short => :c,
         :required => true,
         :description => "The number of machines to provision"
 
       option :type, 
-        :short => "-t TYPE",
-        :long  => "--type TYPE",
-        :description => "The number of machines to provision"
+        :short => :t,
+        :description => "The type of machines to provision"
 
       def run        
-        validate_arguments
-        provision_servers(options[:count])
+        provision_servers(options[:count].to_i)
       end
       
       def provision_servers(count)
-        servers = []; threads = []
+        error("Count must be greater than zero.") unless (count > 0)
+        provisioned = []; threads = []
         count.times do |i|
-          log "Provisioning server #{i+1} for bank '#{options[:bank]}'..."
-          servers << provision_server
-        end
-        $stdout.print "This may take a few minutes .."
-        servers.each do |server|
+          log "Provisioning server #{i+1} for bank '#{bank_name}'..."
           threads << Thread.new do
-            server.wait_for { $stdout.print "." ; $stdout.flush; ready? }
-            self.servers << server.id
+            safely do
+              server = provision_server
+              server.wait_for { ready? }
+              provisioned << server
+              servers << server.id
+            end
           end
         end
-        sleep 1 while threads.any? { |t| t.alive? } 
+        $stdout.print "This may take a few minutes .."
+        sleep 1 while threads.any? { |t| $stdout.print "."; $stdout.flush ; t.alive? } 
         $stdout.print "\n"
-        servers.each do |server|
+        provisioned.each do |server|
           log "Server #{server.id} is ready at #{server.dns_name}."
         end
         save
@@ -58,40 +58,19 @@ module Befog
       
       def provision_server
         compute.servers.create(
-            :tags => {"Name" => options[:bank]}, :region => bank["region"],
-            :flavor_id => bank["type"], :image_id => bank["image"], 
-            :security_group_ids => [options[:group]||"default"],
-            :key_name => bank["keypair"])
+            :tags => {"Name" => generate_server_name},
+            :region => region, :flavor_id => flavor, :image_id => image, 
+            :security_group_ids => security_group, :key_name => keypair)
       end
       
-      def validate_arguments
-        count = options[:count] = options[:count].to_i
-        if count <= 0
-          raise CLI::Error.new "Count must be an integer greater than 0."
-        end
-        required options[:bank], "You must specify the bank for which you want to provision servers"
-        required bank["provider"], <<-EOS
-Bank `#{options[:bank]}` doesn't have a provider specified. 
-Use `befog config #{options[:bank]} --provider <provider>` to configure one.
-EOS
-        required bank["region"], <<-EOS
-Bank `#{options[:bank]}` doesn't have a region specified. 
-Use `befog config #{options[:bank]} --region <region>` to configure one.
-EOS
-        required bank["image"], <<-EOS
-Bank `#{options[:bank]}` doesn't have an image specified. 
-Use `befog config #{options[:bank]} --image <image>` to configure one.
-EOS
-        required bank["keypair"], <<-EOS
-Bank `#{options[:bank]}` doesn't have a keypair specified. 
-Use `befog config #{options[:bank]} --keypair <keypair>` to configure one.
-EOS
-        warning bank["type"], <<-EOS
-Bank `#{options[:bank]}` doesn't have an instance type specified, using default. 
-Use `befog config #{options[:bank]} --type <type>` to configure one, or use the
-'--type' flag with this command.
-EOS
+      def generate_server_name
+        "#{bank_name}-#{generate_id}"
       end
+      
+      def generate_id
+        bank["counter"] += 1
+      end
+
     end
   end
 end
