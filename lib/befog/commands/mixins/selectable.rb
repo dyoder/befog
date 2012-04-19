@@ -45,11 +45,11 @@ module Befog
               if options[:id]
                 block.call(options[:id]) if servers.include?(options[:id])
               else
-                servers.each(&block) if ((provider? and (bank["provider"] == provider_name)) and
-                  (region? and (bank["region"] == region)) and
-                  (image? and (bank["image"] == image)) and
-                  (security_group? and (bank["group"] == security_group)) and
-                  (flavor? and (bank["type"] == flavor)))
+                servers.each(&block) if ((not provider? or (bank["provider"] == provider_name)) and
+                  (not region? or (bank["region"] == region)) and
+                  (not image? or (bank["image"] == image)) and
+                  (not security_group? or (bank["group"] == security_group)) and
+                  (not flavor? or (bank["type"] == flavor)))
               end
             end
           end
