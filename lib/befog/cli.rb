@@ -21,7 +21,7 @@ module Befog
       "rm" => Befog::Commands::Remove,
       # "start" => Befog::Commands::Start,
       # "stop" => Befog::Commands::Stop,
-      # "run" => Befog::Commands::Run,
+      "run" => Befog::Commands::Run,
       "list" => Befog::Commands::List,
       "ls" => Befog::Commands::List,
       "configure" => Befog::Commands::Configure,

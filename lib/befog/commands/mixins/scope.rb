@@ -30,7 +30,7 @@ module Befog
           provider["secret"]
         end
         
-        # TODO: do something more clever once we have more than 2-3 providers
+        # TODO: do something clever once we have more than 2-3 providers
         def compute
           case provider_name
           when "aws"

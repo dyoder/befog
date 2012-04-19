@@ -7,10 +7,10 @@ module Befog
           begin
             yield
           rescue Befog::CLI::Error => e
-            $stderr.puts "\nbefog #{subcommand}: #{e.message}"
+            $stderr.puts "befog #{command.name}: #{e.message}"
             exit(-1)
           rescue => e # uh-oh
-            $stderr.puts "\nUnexpected error"
+            $stderr.puts "Unexpected error"
             $stderr.puts "#{e.class}: #{e.message}"
             $stderr.puts e.backtrace
             exit(-1)

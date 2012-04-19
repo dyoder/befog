@@ -18,7 +18,7 @@ module Befog
       include Mixins::Help
 
       command :name => :remove,
-        :usage => "befog remove <bank> <options>",
+        :usage => "befog remove [<bank>] <options>",
         :default_to_help => true
 
       option :count, 

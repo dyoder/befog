@@ -19,8 +19,14 @@ module Befog
       include Mixins::Help
 
       command :name => :list,
-        :usage => "befog list [<bank>] [<options>]",
-        :default_to_help => false
+        :usage => "befog list [<bank>] <options>",
+        :default_to_help => true
+
+  
+      option :all,
+        :short => :a,
+        :description => "Deprovision all selected servers"
+
 
       def run
         run_for_selected do |id|
