@@ -17,8 +17,8 @@ module Befog
     
     COMMANDS = {
       "add" => Befog::Commands::Add,
-      # "remove" => Befog::Commands::Remove,
-      # "rm" => Befog::Commands::Remove,
+      "remove" => Befog::Commands::Remove,
+      "rm" => Befog::Commands::Remove,
       # "start" => Befog::Commands::Start,
       # "stop" => Befog::Commands::Stop,
       # "run" => Befog::Commands::Run,

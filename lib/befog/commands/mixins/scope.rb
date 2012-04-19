@@ -112,16 +112,10 @@ module Befog
           _bank["servers"] ||= []
         end
         
-        def run_for_each_server
-          if servers.empty?
-            $stderr.puts "No servers are in scope."
-            return
-          end
-          servers.each do |id|
-            run_for_server(id)
-          end
+        def servers=(array)
+          _bank["servers"] = array
         end
-      
+        
       end
     end
   end
