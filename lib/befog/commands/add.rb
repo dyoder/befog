@@ -3,6 +3,7 @@ require "befog/commands/mixins/configurable"
 require "befog/commands/mixins/scope"
 require "befog/commands/mixins/safely"
 require "befog/commands/mixins/help"
+require "befog/commands/mixins/traceable"
 
 module Befog
   module Commands
@@ -13,6 +14,7 @@ module Befog
       include Mixins::Configurable
       include Mixins::Scope
       include Mixins::Help
+      include Mixins::Traceable
       include Mixins::Safely
   
 
@@ -37,23 +39,35 @@ module Befog
         error("Count must be greater than zero.") unless (count > 0)
         provisioned = []; threads = []
         count.times do |i|
-          log "Provisioning server #{i+1} for bank '#{bank_name}'..."
+          verbose <<-EOF.gsub(/^\s*/,"")
+            Provision server: 
+              - region: #{region}
+              - type: #{flavor}
+              - image: #{image}
+              - security group: #{security_group}
+              - keypair: #{keypair}
+          EOF
           threads << Thread.new do
             safely do
-              server = provision_server
-              server.wait_for { ready? }
-              provisioned << server
-              servers << server.id
+              unless rehearse?
+                log "Provisioning server #{i+1} for bank '#{bank_name}'..."
+                server = provision_server
+                server.wait_for { ready? }
+                provisioned << server
+                servers << server.id
+              end
             end
           end
         end
-        $stdout.print "This may take a few minutes .."
-        sleep 1 while threads.any? { |t| $stdout.print "."; $stdout.flush ; t.alive? } 
-        $stdout.print "\n"
-        provisioned.each do |server|
-          log "Server #{server.id} is ready at #{server.dns_name}."
+        unless rehearse?
+          $stdout.print "This may take a few minutes .."
+          sleep 1 while threads.any? { |t| $stdout.print "."; $stdout.flush ; t.alive? } 
+          $stdout.print "\n"
+          provisioned.each do |server|
+            log "Server #{server.id} is ready at #{server.dns_name}."
+          end
+          save
         end
-        save
       end
       
       def provision_server
