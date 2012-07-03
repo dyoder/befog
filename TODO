@@ -1,0 +1,35 @@
+- Perhaps add a REPL and/or the ability to run a script from a file, using a grammar like the following:
+
+    "environment|env :name"
+    "key :provider :key"
+    "secret :provider :secret"
+    "bank :name"
+    "set provider|region|image|keypair :value"
+    "add :count"
+    "remove|rm :count"
+    "scope provider|region|image|group|flavor :scope"
+    "scope"
+    "list|ls"
+    "run :command*"
+    "start"
+    "stop"
+  
+  The readline code for doing this kind of thing:
+  
+    require 'readline'
+
+    LIST = [
+      'search', 'download', 'open',
+      'help', 'history', 'quit',
+      'url', 'next', 'clear',
+      'prev', 'past'
+    ].sort.map { |c| c += " " }
+
+    stty_save = `stty -g`.chomp
+    trap('INT') { system('stty', stty_save); exit }
+    Readline.completion_proc = proc { |s| LIST.grep( /^#{Regexp.escape(s)}/ ) }
+
+    while line = Readline.readline('> ', true)
+      p line.strip
+    end
+  

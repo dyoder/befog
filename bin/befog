@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require "rubygems"
-require "bundler/setup"
 
 # resolve bin path, ignoring symlinks
 require "pathname"

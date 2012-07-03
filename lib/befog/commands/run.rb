@@ -35,20 +35,21 @@ module Befog
     
       def run
         run_for_selected do |id|
-          $stdout.puts "Running command '#{options[:command]}' for #{address} ..."
-          Thread.new do
+          threads = []; threads << Thread.new do
             safely do
               server = get_server(id)
               if server.state == "running"
                 address = server.public_ip_address
+                $stdout.puts "Running command '#{options[:command]}' for #{address} ..."
                 result = Fog::SSH.new(address, "root").run(options[:command]).first
-                $stdout.puts "#{address} STDOUT #{result.stdout}"
-                $stderr.puts "#{address} STDERR #{result.stderr}" if result.stderr
+                $stdout.puts "#{address} STDOUT: #{result.stdout}"
+                $stderr.puts "#{address} STDERR: #{result.stderr}" unless result.stderr.empty?
               else
                 $stdout.puts "Server #{id} isn't running - skipping"
               end
             end
           end
+          sleep 1 while threads.any? { |t| t.alive? }
         end
       end
 

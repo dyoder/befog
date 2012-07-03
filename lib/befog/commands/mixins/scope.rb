@@ -15,11 +15,11 @@ module Befog
         end
         
         def providers
-          @providers ||= configuration["providers"]
+          @providers ||= (configuration["providers"] ||= {})
         end
         
         def provider
-          @provider ||= providers[provider_name]
+          @provider ||= (providers[provider_name] ||= {})
         end
         
         def account_key
@@ -42,6 +42,11 @@ module Befog
             error("Provider '#{provider_name}' is currently unsupported.")
           end
         end
+        
+        def get_server(id)
+          compute.servers.get(id)
+        end
+            
         
         def region
           options[:region] or bank["region"] or 
