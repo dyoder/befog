@@ -35,7 +35,8 @@ For example, the following command sets up the provider, region, image, and keyp
 
     befog configure web-prod --provider aws \
       --region us-east-1 --image <your-aws-image> \
-      --keypair <your-keypair>
+      --keypair <your-keypair> --group <your-aws-group-name> \ 
+      --type <your-aws-server-type>
     
 To see the full list of configuration options, just type:
 
