@@ -82,6 +82,7 @@ module Befog
       end
       
       def generate_id
+        bank["counter"] ||= 0
         bank["counter"] += 1
       end
 
