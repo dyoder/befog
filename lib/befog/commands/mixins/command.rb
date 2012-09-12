@@ -21,9 +21,10 @@ module Befog
               def options ; @options||=[] ; end
 
               def run(options)
+                Befog.show_version if options[:version] or options[:v]
                 new(options).run
               end
-
+              
             end
             
           end

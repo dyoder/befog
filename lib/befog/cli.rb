@@ -50,6 +50,13 @@ module Befog
     
     def self.run(arguments)
       subcommand = arguments.shift
+      # TODO: Rejigger this so we can have top-level options
+      # instead of special-casing --version
+      if subcommand == "--version" or subcommand == "-v"
+        Befog.show_version
+        exit if arguments.empty?
+        subcommand = arguments.shift
+      end
       if subcommand && (command = COMMANDS[subcommand])
         command.run(CLI.parse(arguments))
       elsif subcommand
