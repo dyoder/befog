@@ -35,7 +35,9 @@ module Befog
         end
 
         def save
-          File.open(configuration_path,"w") { |f| YAML.dump(_configuration,f) }
+          # Make sure we load the configuration before opening the file for writing
+          configuration_for_writing = _configuration
+          File.open(configuration_path,"w") { |f| YAML.dump(configuration_for_writing,f) }
           $stdout.puts "Configuration written to: #{configuration_path}"
         end
               
