@@ -72,8 +72,8 @@
   
   
     <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/befog/cli.rb<span class="defines">,<br />
-  lib/befog/commands/run.rb,<br /> lib/befog/commands/add.rb,<br /> lib/befog/commands/list.rb,<br /> lib/befog/commands/stop.rb,<br /> lib/befog/commands/start.rb,<br /> lib/befog/commands/remove.rb,<br /> lib/befog/commands/configure.rb,<br /> lib/befog/commands/mixins/help.rb,<br /> lib/befog/commands/mixins/scope.rb,<br /> lib/befog/commands/mixins/safely.rb,<br /> lib/befog/commands/mixins/command.rb,<br /> lib/befog/commands/mixins/traceable.rb,<br /> lib/befog/commands/mixins/selectable.rb,<br /> lib/befog/commands/mixins/configurable.rb</span>
+    <dd class="r1 last">lib/befog.rb<span class="defines">,<br />
+  lib/befog/cli.rb,<br /> lib/befog/commands/run.rb,<br /> lib/befog/commands/add.rb,<br /> lib/befog/commands/list.rb,<br /> lib/befog/commands/stop.rb,<br /> lib/befog/commands/start.rb,<br /> lib/befog/commands/remove.rb,<br /> lib/befog/commands/configure.rb,<br /> lib/befog/commands/mixins/help.rb,<br /> lib/befog/commands/mixins/scope.rb,<br /> lib/befog/commands/mixins/safely.rb,<br /> lib/befog/commands/mixins/command.rb,<br /> lib/befog/commands/mixins/traceable.rb,<br /> lib/befog/commands/mixins/selectable.rb,<br /> lib/befog/commands/mixins/configurable.rb</span>
 </dd>
   
 </dl>
@@ -90,6 +90,21 @@
   
 </p>
 
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          
+        </dt>
+        <dd><pre class="code"><span class='rubyid_begin begin kw'>begin</span>
+  <span class='rubyid_path identifier id'>path</span> <span class='assign token'>=</span> <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_expand_path identifier id'>expand_path</span><span class='lparen token'>(</span><span class='string val'>&quot;../../VERSION&quot;</span><span class='comma token'>,</span> <span class='rubyid_Pathname constant id'>Pathname</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid___FILE__ __file__ kw'>__FILE__</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rubyid_realpath identifier id'>realpath</span><span class='rparen token'>)</span>
+  <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_read identifier id'>read</span><span class='lparen token'>(</span><span class='rubyid_path identifier id'>path</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rubyid_chomp identifier id'>chomp</span>
+<span class='rubyid_end end kw'>end</span>
+</pre></dd>
+      
+    </dl>
+  
 
 
 
@@ -97,11 +112,79 @@
 
 
 
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#show_version-class_method" title="show_version (class method)">+ (Object) <strong>show_version</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="show_version-class_method">
+  
+    + (<tt>Object</tt>) <strong>show_version</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog.rb', line 7</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_show_version identifier id'>show_version</span>
+  <span class='rubyid_$stdout gvar id'>$stdout</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span> <span class='dstring node'>&quot;Befog Version #{VERSION}&quot;</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 </div>
     
     <div id="footer">
-  Generated on Tue Sep 11 17:58:06 2012 by 
+  Generated on Tue Sep 11 19:27:10 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.5 (ruby-1.8.7).
 </div>

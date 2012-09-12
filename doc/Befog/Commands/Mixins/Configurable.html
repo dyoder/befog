@@ -429,13 +429,17 @@
 37
 38
 39
-40</pre>
+40
+41
+42</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/configurable.rb', line 37</span>
 
 <span class='rubyid_def def kw'>def</span> <span class='rubyid_save identifier id'>save</span>
-  <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_expand_path identifier id'>expand_path</span><span class='lparen token'>(</span><span class='rubyid_configuration_path identifier id'>configuration_path</span><span class='rparen token'>)</span><span class='comma token'>,</span><span class='string val'>&quot;w&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='rubyid_f identifier id'>f</span><span class='bitor op'>|</span> <span class='rubyid_YAML constant id'>YAML</span><span class='dot token'>.</span><span class='rubyid_dump identifier id'>dump</span><span class='lparen token'>(</span><span class='rubyid__configuration identifier id'>_configuration</span><span class='comma token'>,</span><span class='rubyid_f identifier id'>f</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='comment val'># Make sure we load the configuration before opening the file for writing</span>
+  <span class='rubyid_configuration_for_writing identifier id'>configuration_for_writing</span> <span class='assign token'>=</span> <span class='rubyid__configuration identifier id'>_configuration</span>
+  <span class='rubyid_File constant id'>File</span><span class='dot token'>.</span><span class='rubyid_open identifier id'>open</span><span class='lparen token'>(</span><span class='rubyid_configuration_path identifier id'>configuration_path</span><span class='comma token'>,</span><span class='string val'>&quot;w&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='rubyid_f identifier id'>f</span><span class='bitor op'>|</span> <span class='rubyid_YAML constant id'>YAML</span><span class='dot token'>.</span><span class='rubyid_dump identifier id'>dump</span><span class='lparen token'>(</span><span class='rubyid_configuration_for_writing identifier id'>configuration_for_writing</span><span class='comma token'>,</span><span class='rubyid_f identifier id'>f</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
   <span class='rubyid_$stdout gvar id'>$stdout</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span> <span class='dstring node'>&quot;Configuration written to: #{configuration_path}&quot;</span>
 <span class='rubyid_end end kw'>end</span>
 </pre>
@@ -449,7 +453,7 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Sep 11 17:58:07 2012 by 
+  Generated on Tue Sep 11 19:27:11 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.5 (ruby-1.8.7).
 </div>

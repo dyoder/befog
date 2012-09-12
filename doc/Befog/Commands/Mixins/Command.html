@@ -321,12 +321,12 @@
       <pre class="lines">
 
 
-32
 33
-34</pre>
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 33</span>
 
 <span class='rubyid_def def kw'>def</span> <span class='rubyid_options identifier id'>options</span>
   <span class='rubyid_@options ivar id'>@options</span>
@@ -379,7 +379,8 @@
 27
 28
 29
-30</pre>
+30
+31</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 8</span>
@@ -400,9 +401,10 @@
       <span class='rubyid_def def kw'>def</span> <span class='rubyid_options identifier id'>options</span> <span class='semicolon token'>;</span> <span class='rubyid_@options ivar id'>@options</span><span class='opasgn op'>||=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span> <span class='semicolon token'>;</span> <span class='rubyid_end end kw'>end</span>
 
       <span class='rubyid_def def kw'>def</span> <span class='rubyid_run identifier id'>run</span><span class='lparen token'>(</span><span class='rubyid_options identifier id'>options</span><span class='rparen token'>)</span>
+        <span class='rubyid_Befog constant id'>Befog</span><span class='dot token'>.</span><span class='rubyid_show_version identifier id'>show_version</span> <span class='rubyid_if if_mod kw'>if</span> <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:version</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:v</span><span class='rbrack token'>]</span>
         <span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_options identifier id'>options</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rubyid_run identifier id'>run</span>
       <span class='rubyid_end end kw'>end</span>
-
+      
     <span class='rubyid_end end kw'>end</span>
     
   <span class='rubyid_end end kw'>end</span>
@@ -432,12 +434,12 @@
       <pre class="lines">
 
 
-40
 41
-42</pre>
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 41</span>
 
 <span class='rubyid_def def kw'>def</span> <span class='rubyid_command identifier id'>command</span>
   <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_class identifier id'>class</span><span class='dot token'>.</span><span class='rubyid_command identifier id'>command</span>
@@ -483,12 +485,12 @@
       <pre class="lines">
 
 
-76
 77
-78</pre>
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 77</span>
 
 <span class='rubyid_def def kw'>def</span> <span class='rubyid_error identifier id'>error</span><span class='lparen token'>(</span><span class='rubyid_message identifier id'>message</span><span class='rparen token'>)</span>
   <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_CLI constant id'>CLI</span><span class='colon2 op'>::</span><span class='rubyid_Error constant id'>Error</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_message identifier id'>message</span><span class='rparen token'>)</span>
@@ -523,14 +525,14 @@
       <pre class="lines">
 
 
-34
 35
 36
 37
-38</pre>
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 35</span>
 
 <span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid__options identifier id'>_options</span><span class='rparen token'>)</span>
   <span class='rubyid_safely identifier id'>safely</span> <span class='rubyid_do do kw'>do</span>
@@ -556,12 +558,12 @@
       <pre class="lines">
 
 
-80
 81
-82</pre>
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 81</span>
 
 <span class='rubyid_def def kw'>def</span> <span class='rubyid_log identifier id'>log</span><span class='lparen token'>(</span><span class='rubyid_message identifier id'>message</span><span class='rparen token'>)</span>
   <span class='rubyid_$stdout gvar id'>$stdout</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span><span class='lparen token'>(</span><span class='rubyid_message identifier id'>message</span><span class='rparen token'>)</span>
@@ -596,7 +598,6 @@
       <pre class="lines">
 
 
-45
 46
 47
 48
@@ -611,10 +612,11 @@
 57
 58
 59
-60</pre>
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 46</span>
 
 <span class='rubyid_def def kw'>def</span> <span class='rubyid_process_options identifier id'>process_options</span><span class='lparen token'>(</span><span class='rubyid__options identifier id'>_options</span><span class='rparen token'>)</span>
   <span class='rubyid_if if kw'>if</span> <span class='lparen token'>(</span><span class='rubyid_command identifier id'>command</span><span class='dot token'>.</span><span class='rubyid_default_to_help identifier id'>default_to_help</span> <span class='rubyid_and and kw'>and</span> <span class='rubyid__options identifier id'>_options</span><span class='dot token'>.</span><span class='rubyid_empty? fid id'>empty?</span><span class='rparen token'>)</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid__options identifier id'>_options</span><span class='lbrack token'>[</span><span class='symbol val'>:help</span><span class='rbrack token'>]</span>
@@ -651,7 +653,6 @@
       <pre class="lines">
 
 
-62
 63
 64
 65
@@ -661,10 +662,11 @@
 69
 70
 71
-72</pre>
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 63</span>
 
 <span class='rubyid_def def kw'>def</span> <span class='rubyid_usage identifier id'>usage</span>
   <span class='rubyid_$stderr gvar id'>$stderr</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span> <span class='rubyid_command identifier id'>command</span><span class='dot token'>.</span><span class='rubyid_usage identifier id'>usage</span>
@@ -688,7 +690,7 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Sep 11 17:58:06 2012 by 
+  Generated on Tue Sep 11 19:27:12 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.5 (ruby-1.8.7).
 </div>

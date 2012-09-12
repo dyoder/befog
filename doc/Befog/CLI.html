@@ -295,13 +295,27 @@
 57
 58
 59
-60</pre>
+60
+61
+62
+63
+64
+65
+66
+67</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/befog/cli.rb', line 51</span>
 
 <span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_run identifier id'>run</span><span class='lparen token'>(</span><span class='rubyid_arguments identifier id'>arguments</span><span class='rparen token'>)</span>
   <span class='rubyid_subcommand identifier id'>subcommand</span> <span class='assign token'>=</span> <span class='rubyid_arguments identifier id'>arguments</span><span class='dot token'>.</span><span class='rubyid_shift identifier id'>shift</span>
+  <span class='comment val'># TODO: Rejigger this so we can have top-level options</span>
+  <span class='comment val'># instead of special-casing --version</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_subcommand identifier id'>subcommand</span> <span class='eq op'>==</span> <span class='string val'>&quot;--version&quot;</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_subcommand identifier id'>subcommand</span> <span class='eq op'>==</span> <span class='string val'>&quot;-v&quot;</span>
+    <span class='rubyid_Befog constant id'>Befog</span><span class='dot token'>.</span><span class='rubyid_show_version identifier id'>show_version</span>
+    <span class='rubyid_exit identifier id'>exit</span> <span class='rubyid_if if_mod kw'>if</span> <span class='rubyid_arguments identifier id'>arguments</span><span class='dot token'>.</span><span class='rubyid_empty? fid id'>empty?</span>
+    <span class='rubyid_subcommand identifier id'>subcommand</span> <span class='assign token'>=</span> <span class='rubyid_arguments identifier id'>arguments</span><span class='dot token'>.</span><span class='rubyid_shift identifier id'>shift</span>
+  <span class='rubyid_end end kw'>end</span>
   <span class='rubyid_if if kw'>if</span> <span class='rubyid_subcommand identifier id'>subcommand</span> <span class='andop op'>&amp;&amp;</span> <span class='lparen token'>(</span><span class='rubyid_command identifier id'>command</span> <span class='assign token'>=</span> <span class='rubyid_COMMANDS constant id'>COMMANDS</span><span class='lbrack token'>[</span><span class='rubyid_subcommand identifier id'>subcommand</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
     <span class='rubyid_command identifier id'>command</span><span class='dot token'>.</span><span class='rubyid_run identifier id'>run</span><span class='lparen token'>(</span><span class='rubyid_CLI constant id'>CLI</span><span class='dot token'>.</span><span class='rubyid_parse identifier id'>parse</span><span class='lparen token'>(</span><span class='rubyid_arguments identifier id'>arguments</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
   <span class='rubyid_elsif elsif kw'>elsif</span> <span class='rubyid_subcommand identifier id'>subcommand</span>
@@ -329,15 +343,15 @@
       <pre class="lines">
 
 
-62
-63
-64
-65
-66
-67</pre>
+69
+70
+71
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/befog/cli.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/befog/cli.rb', line 69</span>
 
 <span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_usage identifier id'>usage</span><span class='lparen token'>(</span><span class='rubyid_message identifier id'>message</span><span class='assign token'>=</span><span class='rubyid_nil nil kw'>nil</span><span class='rparen token'>)</span>
   <span class='rubyid_$stderr gvar id'>$stderr</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span> <span class='dstring node'>&quot;befog: #{message}&quot;</span> <span class='rubyid_if if_mod kw'>if</span> <span class='rubyid_message identifier id'>message</span>
@@ -356,7 +370,7 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Sep 11 17:58:06 2012 by 
+  Generated on Tue Sep 11 19:27:10 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.5 (ruby-1.8.7).
 </div>
