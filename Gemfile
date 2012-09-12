@@ -1,3 +1,3 @@
-source "http://rubygems.org"
-
+source :gemcutter
+source :rubyforge
 gemspec

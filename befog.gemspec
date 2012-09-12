@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.default_executable = "befog"
   s.homepage    =
     'https://github.com/spire-io/befog'
+	s.add_runtime_dependency "bundler", ["~> 1.2"]
 	s.add_runtime_dependency "fog", ["~> 1.3"]
 	s.add_development_dependency "rspec", ["~> 2.7"]
 	s.add_development_dependency "yard", ["~> 0.7"]
