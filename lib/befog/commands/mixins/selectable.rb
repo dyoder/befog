@@ -23,7 +23,7 @@ module Befog
 
             option :group, 
               :short => :g,
-              :description => "Select servers using this group"
+              :description => "Select servers using this security group"
 
             option :type, 
               :short => :t,
