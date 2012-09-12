@@ -1,0 +1,1564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Befog::Commands::Mixins::Scope
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (S)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Befog.html" title="Befog (module)">Befog</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Commands.html" title="Befog::Commands (module)">Commands</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Mixins.html" title="Befog::Commands::Mixins (module)">Mixins</a></span></span>
+     &raquo; 
+    <span class="title">Scope</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Befog::Commands::Mixins::Scope
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="../Add.html" title="Befog::Commands::Add (class)">Add</a></span>, <span class='object_link'><a href="../Configure.html" title="Befog::Commands::Configure (class)">Configure</a></span>, <span class='object_link'><a href="../List.html" title="Befog::Commands::List (class)">List</a></span>, <span class='object_link'><a href="../Remove.html" title="Befog::Commands::Remove (class)">Remove</a></span>, <span class='object_link'><a href="../Run.html" title="Befog::Commands::Run (class)">Run</a></span>, <span class='object_link'><a href="../Start.html" title="Befog::Commands::Start (class)">Start</a></span>, <span class='object_link'><a href="../Stop.html" title="Befog::Commands::Stop (class)">Stop</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/befog/commands/mixins/scope.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#_bank-instance_method" title="#_bank (instance method)">- (Object) <strong>_bank</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#account_key-instance_method" title="#account_key (instance method)">- (Object) <strong>account_key</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#account_secret-instance_method" title="#account_secret (instance method)">- (Object) <strong>account_secret</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bank-instance_method" title="#bank (instance method)">- (Object) <strong>bank</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bank%3F-instance_method" title="#bank? (instance method)">- (Boolean) <strong>bank?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bank_name-instance_method" title="#bank_name (instance method)">- (Object) <strong>bank_name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#banks-instance_method" title="#banks (instance method)">- (Object) <strong>banks</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compute-instance_method" title="#compute (instance method)">- (Object) <strong>compute</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>TODO: do something clever once we have more than 2-3 providers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#flavor-instance_method" title="#flavor (instance method)">- (Object) <strong>flavor</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#flavor%3F-instance_method" title="#flavor? (instance method)">- (Boolean) <strong>flavor?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_server-instance_method" title="#get_server (instance method)">- (Object) <strong>get_server</strong>(id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#image-instance_method" title="#image (instance method)">- (Object) <strong>image</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#image%3F-instance_method" title="#image? (instance method)">- (Boolean) <strong>image?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#keypair-instance_method" title="#keypair (instance method)">- (Object) <strong>keypair</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#keypair%3F-instance_method" title="#keypair? (instance method)">- (Boolean) <strong>keypair?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#provider-instance_method" title="#provider (instance method)">- (Object) <strong>provider</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#provider%3F-instance_method" title="#provider? (instance method)">- (Boolean) <strong>provider?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#provider_name-instance_method" title="#provider_name (instance method)">- (Object) <strong>provider_name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#providers-instance_method" title="#providers (instance method)">- (Object) <strong>providers</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#region-instance_method" title="#region (instance method)">- (Object) <strong>region</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#region%3F-instance_method" title="#region? (instance method)">- (Boolean) <strong>region?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#security_group-instance_method" title="#security_group (instance method)">- (Object) <strong>security_group</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#security_group%3F-instance_method" title="#security_group? (instance method)">- (Boolean) <strong>security_group?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#servers-instance_method" title="#servers (instance method)">- (Object) <strong>servers</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#servers%3D-instance_method" title="#servers= (instance method)">- (Object) <strong>servers=</strong>(array) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="_bank-instance_method">
+  
+    - (<tt>Object</tt>) <strong>_bank</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+100
+101
+102</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 100</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid__bank identifier id'>_bank</span>
+  <span class='rubyid_banks identifier id'>banks</span><span class='lbrack token'>[</span><span class='rubyid_bank_name identifier id'>bank_name</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="account_key-instance_method">
+  
+    - (<tt>Object</tt>) <strong>account_key</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 25</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_account_key identifier id'>account_key</span>
+  <span class='rubyid_provider identifier id'>provider</span><span class='lbrack token'>[</span><span class='string val'>&quot;key&quot;</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="account_secret-instance_method">
+  
+    - (<tt>Object</tt>) <strong>account_secret</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 29</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_account_secret identifier id'>account_secret</span>
+  <span class='rubyid_provider identifier id'>provider</span><span class='lbrack token'>[</span><span class='string val'>&quot;secret&quot;</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="bank-instance_method">
+  
+    - (<tt>Object</tt>) <strong>bank</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 104</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_bank identifier id'>bank</span>
+  <span class='rubyid__bank identifier id'>_bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;configuration&quot;</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="bank?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>bank?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108
+109
+110</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 108</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_bank? fid id'>bank?</span>
+  <span class='notop op'>!</span><span class='notop op'>!</span><span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:bank</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="bank_name-instance_method">
+  
+    - (<tt>Object</tt>) <strong>bank_name</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 112</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_bank_name identifier id'>bank_name</span>
+  <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:bank</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_error identifier id'>error</span><span class='lparen token'>(</span><span class='string val'>&quot;Did you mean to include a bank name?&quot;</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="banks-instance_method">
+  
+    - (<tt>Object</tt>) <strong>banks</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 96</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_banks identifier id'>banks</span>
+  <span class='rubyid_configuration identifier id'>configuration</span><span class='lbrack token'>[</span><span class='string val'>&quot;banks&quot;</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="compute-instance_method">
+  
+    - (<tt>Object</tt>) <strong>compute</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>TODO: do something clever once we have more than 2-3 providers</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 34</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_compute identifier id'>compute</span>
+  <span class='rubyid_case case kw'>case</span> <span class='rubyid_provider_name identifier id'>provider_name</span>
+  <span class='rubyid_when when kw'>when</span> <span class='string val'>&quot;aws&quot;</span>
+    <span class='rubyid_@compute ivar id'>@compute</span> <span class='opasgn op'>||=</span> <span class='rubyid_Fog constant id'>Fog</span><span class='colon2 op'>::</span><span class='rubyid_Compute constant id'>Compute</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='symbol val'>:provider</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;AWS&quot;</span><span class='comma token'>,</span> 
+      <span class='symbol val'>:aws_access_key_id</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='rubyid_account_key identifier id'>account_key</span><span class='comma token'>,</span> 
+      <span class='symbol val'>:aws_secret_access_key</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='rubyid_account_secret identifier id'>account_secret</span><span class='comma token'>,</span>
+      <span class='symbol val'>:region</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='rubyid_region identifier id'>region</span><span class='rparen token'>)</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='rubyid_error identifier id'>error</span><span class='lparen token'>(</span><span class='dstring node'>&quot;Provider '#{provider_name}' is currently unsupported.&quot;</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="flavor-instance_method">
+  
+    - (<tt>Object</tt>) <strong>flavor</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 60</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_flavor identifier id'>flavor</span>
+  <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:type</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_bank identifier id'>bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;type&quot;</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> 
+    <span class='rubyid_error identifier id'>error</span><span class='lparen token'>(</span><span class='dstring node'>&quot;Specify an instance type (flavor) with --type or by adding one to the '#{bank_name}' bank.&quot;</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="flavor?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>flavor?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65
+66
+67</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 65</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_flavor? fid id'>flavor?</span>
+  <span class='notop op'>!</span><span class='notop op'>!</span><span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:type</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_bank identifier id'>bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;type&quot;</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_server-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_server</strong>(id) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 46</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_get_server identifier id'>get_server</span><span class='lparen token'>(</span><span class='rubyid_id identifier id'>id</span><span class='rparen token'>)</span>
+  <span class='rubyid_compute identifier id'>compute</span><span class='dot token'>.</span><span class='rubyid_servers identifier id'>servers</span><span class='dot token'>.</span><span class='rubyid_get identifier id'>get</span><span class='lparen token'>(</span><span class='rubyid_id identifier id'>id</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="image-instance_method">
+  
+    - (<tt>Object</tt>) <strong>image</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 69</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_image identifier id'>image</span>
+  <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:image</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_bank identifier id'>bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;image&quot;</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> 
+    <span class='rubyid_error identifier id'>error</span><span class='lparen token'>(</span><span class='dstring node'>&quot;Specify an image with --image or by adding one to the '#{bank_name}' bank.&quot;</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="image?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>image?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 74</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_image? fid id'>image?</span>
+  <span class='notop op'>!</span><span class='notop op'>!</span><span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:image</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_bank identifier id'>bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;image&quot;</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="keypair-instance_method">
+  
+    - (<tt>Object</tt>) <strong>keypair</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+87
+88
+89
+90</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 87</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_keypair identifier id'>keypair</span>
+  <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:keypair</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_bank identifier id'>bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;keypair&quot;</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> 
+    <span class='rubyid_error identifier id'>error</span><span class='lparen token'>(</span><span class='dstring node'>&quot;Specify a keypair with --keypair or by adding one to the '#{bank_name}' bank.&quot;</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="keypair?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>keypair?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92
+93
+94</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 92</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_keypair? fid id'>keypair?</span>
+  <span class='notop op'>!</span><span class='notop op'>!</span><span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:keypair</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_bank identifier id'>bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;keypair&quot;</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="provider-instance_method">
+  
+    - (<tt>Object</tt>) <strong>provider</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 21</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_provider identifier id'>provider</span>
+  <span class='rubyid_@provider ivar id'>@provider</span> <span class='opasgn op'>||=</span> <span class='lparen token'>(</span><span class='rubyid_providers identifier id'>providers</span><span class='lbrack token'>[</span><span class='rubyid_provider_name identifier id'>provider_name</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="provider?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>provider?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 13</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_provider? fid id'>provider?</span>
+  <span class='notop op'>!</span><span class='notop op'>!</span><span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:provider</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_bank identifier id'>bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;provider&quot;</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="provider_name-instance_method">
+  
+    - (<tt>Object</tt>) <strong>provider_name</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 8</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_provider_name identifier id'>provider_name</span>
+  <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:provider</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_bank identifier id'>bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;provider&quot;</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> 
+    <span class='rubyid_error identifier id'>error</span><span class='lparen token'>(</span><span class='dstring node'>&quot;Specify a provider with --provider or by adding one to the '#{bank_name}' bank.&quot;</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="providers-instance_method">
+  
+    - (<tt>Object</tt>) <strong>providers</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 17</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_providers identifier id'>providers</span>
+  <span class='rubyid_@providers ivar id'>@providers</span> <span class='opasgn op'>||=</span> <span class='lparen token'>(</span><span class='rubyid_configuration identifier id'>configuration</span><span class='lbrack token'>[</span><span class='string val'>&quot;providers&quot;</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="region-instance_method">
+  
+    - (<tt>Object</tt>) <strong>region</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 51</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_region identifier id'>region</span>
+  <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:region</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_bank identifier id'>bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;region&quot;</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> 
+    <span class='rubyid_error identifier id'>error</span><span class='lparen token'>(</span><span class='dstring node'>&quot;Specify a region with --region or by adding one to the '#{bank_name}' bank.&quot;</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="region?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>region?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 56</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_region? fid id'>region?</span>
+  <span class='notop op'>!</span><span class='notop op'>!</span><span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:region</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_bank identifier id'>bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;region&quot;</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="security_group-instance_method">
+  
+    - (<tt>Object</tt>) <strong>security_group</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 78</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_security_group identifier id'>security_group</span>
+  <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:group</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_bank identifier id'>bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;group&quot;</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> 
+    <span class='rubyid_error identifier id'>error</span><span class='lparen token'>(</span><span class='dstring node'>&quot;Specify a security group with --group or by adding one to the '#{bank_name}' bank.&quot;</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="security_group?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>security_group?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 83</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_security_group? fid id'>security_group?</span>
+  <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:group</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_bank identifier id'>bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;group&quot;</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="servers-instance_method">
+  
+    - (<tt>Object</tt>) <strong>servers</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+116
+117
+118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 116</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_servers identifier id'>servers</span>
+  <span class='rubyid__bank identifier id'>_bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;servers&quot;</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="servers=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>servers=</strong>(array) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/scope.rb', line 120</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_servers= identifier id'>servers=</span><span class='lparen token'>(</span><span class='rubyid_array identifier id'>array</span><span class='rparen token'>)</span>
+  <span class='rubyid__bank identifier id'>_bank</span><span class='lbrack token'>[</span><span class='string val'>&quot;servers&quot;</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='rubyid_array identifier id'>array</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Sep 11 17:58:07 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

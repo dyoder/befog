@@ -1,0 +1,17 @@
+lib/befog/commands/mixins/help.rb 552127422d5692ae13745e881e43cc3edeb14d11
+lib/befog/commands/mixins/traceable.rb 9d959d9139b51777c0550098a0377bb01e578437
+lib/befog/commands/configure.rb 74ced427207a954bd73db5e3f5a82ae952c8bfa3
+lib/befog/commands/list.rb 346efb27e90caad7d99010f7ce9989898689bc98
+lib/befog/commands.rb bc9a04ea7edc827f6ec4f2712a750d72c9521b20
+lib/befog.rb 9392f2393b83c03e6bd08a531d1f452f5286f22c
+lib/befog/commands/add.rb a7d2872112f52df5faf1099e0de818f9ed14382e
+lib/befog/commands/run.rb f483d34b71290b5df55cd55dcfe5e91df30c62aa
+lib/befog/commands/mixins/command.rb 4eed83e4430fbd119e16f594183fa6fdc7fcdd71
+lib/befog/commands/mixins/safely.rb 36bedeb84e39714691c539fac364525d72cfd6b0
+lib/befog/commands/start.rb 8d37d3b0b16c6623dbb5ea8db60ea172b57d46e7
+lib/befog/commands/stop.rb 79515c65f4a98cce212a43061399eb6a0689ff57
+lib/befog/cli.rb 32ddcf38d0aac27e68e9d045de04dd67bd4ff1e0
+lib/befog/commands/mixins/selectable.rb 9d4c40f0030fa8dec650b5871ca804f8643ed6e3
+lib/befog/commands/mixins/configurable.rb 6679228a143d86579c1afd89b5a590418a8b1348
+lib/befog/commands/mixins/scope.rb a15e843077cddaeec2192efd105aeec8f4ebecfd
+lib/befog/commands/remove.rb 28262a13c53fa865e244b37dba6b037c754166a1

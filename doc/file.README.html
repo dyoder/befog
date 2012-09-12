@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><p>Befog is a command line utility for cloud management. Or, put another way, it&#39;s a CLI wrapper for the <code>fog</code> gem.</p>
+
+<p>Befog allows you to manage groups or clusters of servers as &quot;banks.&quot;  A bank can have one or many servers.<br>
+Features include the ability to start, stop, add to, remove, or run a command on all servers in a bank.</p>
+
+<p>For example, the following command would add 3 servers to the server bank named <code>web-prod</code>:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_add identifier id'>add</span> <span class='rubyid_web identifier id'>web</span><span class='minus op'>-</span><span class='rubyid_prod identifier id'>prod</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_count identifier id'>count</span> <span class='integer val'>3</span>
+</code></pre>
+
+<p>Befog provides some basic help whenever a command is invoked with no arguments. You can start with this:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span>
+</code></pre>
+
+<p>and go from there. For example, you can do:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_add identifier id'>add</span>
+</code></pre>
+
+<p>And you&#39;ll get this:</p>
+
+<pre class="code ruby"><code><span class='rubyid_Usage constant id'>Usage</span><span class='colon op'>:</span> <span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_add identifier id'>add</span> <span class='lt op'>&lt;</span><span class='rubyid_bank identifier id'>bank</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rubyid_options identifier id'>options</span><span class='rbrack token'>]</span>
+    <span class='minus op'>-</span><span class='rubyid_n identifier id'>n</span><span class='comma token'>,</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_number identifier id'>number</span> <span class='rubyid_NUMBER constant id'>NUMBER</span>              <span class='rubyid_The constant id'>The</span> <span class='rubyid_number identifier id'>number</span> <span class='rubyid_of identifier id'>of</span> <span class='rubyid_machines identifier id'>machines</span> <span class='rubyid_to identifier id'>to</span> <span class='rubyid_provision identifier id'>provision</span>
+    <span class='minus op'>-</span><span class='rubyid_p identifier id'>p</span><span class='comma token'>,</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_path identifier id'>path</span> <span class='rubyid_PATH constant id'>PATH</span>                  <span class='rubyid_Path constant id'>Path</span> <span class='rubyid_to identifier id'>to</span> <span class='rubyid_the identifier id'>the</span> <span class='rubyid_configuration identifier id'>configuration</span> <span class='rubyid_file identifier id'>file</span> <span class='rubyid_you identifier id'>you</span> <span class='rubyid_want identifier id'>want</span> <span class='rubyid_to identifier id'>to</span> <span class='rubyid_use identifier id'>use</span> <span class='lparen token'>(</span><span class='rubyid_defaults identifier id'>defaults</span> <span class='rubyid_to identifier id'>to</span> <span class='string val'>'~/.befog'</span><span class='rparen token'>)</span>
+        <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_name identifier id'>name</span> <span class='rubyid_NAME constant id'>NAME</span>                  <span class='rubyid_The constant id'>The</span> <span class='rubyid_name identifier id'>name</span> <span class='rubyid_of identifier id'>of</span> <span class='rubyid_this identifier id'>this</span> <span class='rubyid_configuration identifier id'>configuration</span> <span class='lparen token'>(</span><span class='rubyid_defaults identifier id'>defaults</span> <span class='rubyid_to identifier id'>to</span> <span class='string val'>'default'</span><span class='rparen token'>)</span>
+    <span class='minus op'>-</span><span class='rubyid_h identifier id'>h</span><span class='comma token'>,</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_help identifier id'>help</span>                       <span class='rubyid_Show constant id'>Show</span> <span class='rubyid_this identifier id'>this</span> <span class='rubyid_message identifier id'>message</span>
+</code></pre>
+
+<h2>Configuring Befog</h2>
+
+<p>In order to do anything interesting, you first need to tell Befog about your cloud accounts. You do this using the <code>configure</code> subcommand.</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_configure identifier id'>configure</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_provider identifier id'>provider</span> <span class='rubyid_aws identifier id'>aws</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_key identifier id'>key</span> <span class='lt op'>&lt;</span><span class='rubyid_your identifier id'>your</span><span class='minus op'>-</span><span class='rubyid_aws identifier id'>aws</span><span class='minus op'>-</span><span class='rubyid_key identifier id'>key</span><span class='gt op'>&gt;</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_secret identifier id'>secret</span> <span class='lt op'>&lt;</span><span class='rubyid_your identifier id'>your</span><span class='minus op'>-</span><span class='rubyid_aws identifier id'>aws</span><span class='minus op'>-</span><span class='rubyid_secret identifier id'>secret</span><span class='gt op'>&gt;</span>
+</code></pre>
+
+<p>You also need to set up bank-specific configurations.</p>
+
+<p>For example, the following command sets up the provider, region, image, and keypair to be used with the server bank named <code>web-prod</code>:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_configure identifier id'>configure</span> <span class='rubyid_web identifier id'>web</span><span class='minus op'>-</span><span class='rubyid_prod identifier id'>prod</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_provider identifier id'>provider</span> <span class='rubyid_aws identifier id'>aws</span> \
+  <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_region identifier id'>region</span> <span class='rubyid_us identifier id'>us</span><span class='minus op'>-</span><span class='rubyid_east identifier id'>east</span><span class='minus op'>-</span><span class='integer val'>1</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_image identifier id'>image</span> <span class='lt op'>&lt;</span><span class='rubyid_your identifier id'>your</span><span class='minus op'>-</span><span class='rubyid_aws identifier id'>aws</span><span class='minus op'>-</span><span class='rubyid_image identifier id'>image</span><span class='gt op'>&gt;</span> \
+  <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_keypair identifier id'>keypair</span> <span class='lt op'>&lt;</span><span class='rubyid_your identifier id'>your</span><span class='minus op'>-</span><span class='rubyid_keypair identifier id'>keypair</span><span class='gt op'>&gt;</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_group identifier id'>group</span> <span class='lt op'>&lt;</span><span class='rubyid_your identifier id'>your</span><span class='minus op'>-</span><span class='rubyid_aws identifier id'>aws</span><span class='minus op'>-</span><span class='rubyid_group identifier id'>group</span><span class='minus op'>-</span><span class='rubyid_name identifier id'>name</span><span class='gt op'>&gt;</span> \ 
+  <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_type identifier id'>type</span> <span class='lt op'>&lt;</span><span class='rubyid_your identifier id'>your</span><span class='minus op'>-</span><span class='rubyid_aws identifier id'>aws</span><span class='minus op'>-</span><span class='rubyid_server identifier id'>server</span><span class='minus op'>-</span><span class='rubyid_type identifier id'>type</span><span class='gt op'>&gt;</span>
+</code></pre>
+
+<p>To see the full list of configuration options, just type:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_configure identifier id'>configure</span>
+</code></pre>
+
+<p>You generally don&#39;t need to set these up very often - just when setting up a new bank, typically using a different region, provider, or image. Once a bank is configured, all servers deployed using that bank will use the bank&#39;s configuration automatically.</p>
+
+<h2>Provisioning Servers</h2>
+
+<p>Once you have a configuration set up, you can easily provision new servers:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_add identifier id'>add</span> <span class='rubyid_web identifier id'>web</span><span class='minus op'>-</span><span class='rubyid_prod identifier id'>prod</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_count identifier id'>count</span> <span class='integer val'>3</span>
+</code></pre>
+
+<p>You can also de-provision them just as easily:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_remove identifier id'>remove</span> <span class='rubyid_web identifier id'>web</span><span class='minus op'>-</span><span class='rubyid_prod identifier id'>prod</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_count identifier id'>count</span> <span class='integer val'>3</span>
+</code></pre>
+
+<h2>Multiple Configurations</h2>
+
+<p>Sometimes you want one set of servers for a test environment and another for production or a beta environment. You can use the <code>--environment</code> option to handle different environments. For example, let&#39;s start up the <code>web-prod</code> bank of our <code>test</code> environment:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_start identifier id'>start</span> <span class='rubyid_web identifier id'>web</span><span class='minus op'>-</span><span class='rubyid_prod identifier id'>prod</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_e identifier id'>e</span> <span class='rubyid_test identifier id'>test</span>
+</code></pre>
+
+<p>Each environment must be configured separately. Again, once configured, you can typically use that configuration over and over.</p>
+
+<p>Another option is to simply use different configuration files. You can do this with the --path command.</p>
+
+<p>Finally, you can simply edit configurations directly if you want, since they are just YAML files and are fairly easy to read. Be careful, though, since this can confuse <code>befog</code> if the format get mangled somehow.</p>
+
+<h2>Other Features</h2>
+
+<p>You can suspend a bank:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_stop identifier id'>stop</span> <span class='rubyid_web identifier id'>web</span><span class='minus op'>-</span><span class='rubyid_prod identifier id'>prod</span>
+</code></pre>
+
+<p>Or start them back up:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_start identifier id'>start</span> <span class='rubyid_web identifier id'>web</span><span class='minus op'>-</span><span class='rubyid_prod identifier id'>prod</span>
+</code></pre>
+
+<p>You can even run a command on every server in a bank:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_run identifier id'>run</span> <span class='rubyid_web identifier id'>web</span><span class='minus op'>-</span><span class='rubyid_prod identifier id'>prod</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_command identifier id'>command</span> <span class='string val'>'apt-get install redis'</span>
+</code></pre>
+
+<p>You can get a list of all the servers associated with a bank:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_ls identifier id'>ls</span> <span class='rubyid_web identifier id'>web</span><span class='minus op'>-</span><span class='rubyid_prod identifier id'>prod</span>
+</code></pre>
+
+<p>or with a specific-provider:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_ls identifier id'>ls</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='rubyid_provider identifier id'>provider</span> <span class='rubyid_aws identifier id'>aws</span>
+</code></pre>
+
+<p>or for all servers currently deployed:</p>
+
+<pre class="code ruby"><code><span class='rubyid_befog identifier id'>befog</span> <span class='rubyid_ls identifier id'>ls</span>
+</code></pre>
+
+<h2>Limitations</h2>
+
+<p>Befog is currently still under development and only supports basic provisioning options for Amazon EC2.</p>
+</div></div>
+    
+    <div id="footer">
+  Generated on Tue Sep 11 17:58:05 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

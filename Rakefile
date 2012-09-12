@@ -8,12 +8,12 @@ $version = File.read("VERSION").chomp
 
 desc "run yardoc"
 task :doc do
-	sh "./bin/yard"
+	sh "yard"
 end
 
 desc "run tests"
 task :test do
-	sh "./bin/rspec #{FileList["test/*.rb"]}"
+	sh ".rspec #{FileList["test/*.rb"]}"
 end
 
 task :gem => :update do
@@ -21,7 +21,7 @@ task :gem => :update do
 end
 
 task :update do
-  sh "bundle install"
+  # no-op for now
 end
 
 desc "generate docs and build a gem"
