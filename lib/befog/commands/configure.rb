@@ -42,7 +42,7 @@ module Befog
     
       option :keypair, 
         :short => :x,
-        :description => "The keypair name to use with SSH"
+        :description => "The cloud provider SSH key pair name to use with the instances in this bank"
 
       option :group, 
         :short => :g,
