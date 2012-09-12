@@ -40,18 +40,18 @@ module Befog
         end
         run_for_selected do |id|
           if options[:all] or count > 0
-            threads << Thread.new do
+            # threads << Thread.new do
               safely do
                 log "Deprovisioning server #{id} ..."
                 compute.servers.get(id).destroy
                 deleted << id
                 count -= 1
               end
-            end
+            # end
           end
         end
         $stdout.print "This may take a few minutes .."
-        sleep 1 while threads.any? { |t| $stdout.print "."; $stdout.flush ; t.alive? } 
+        # sleep 1 while threads.any? { |t| $stdout.print "."; $stdout.flush ; t.alive? } 
         $stdout.print "\n"
         self.servers -= deleted
         save

@@ -24,7 +24,7 @@ module Befog
 
       option :all,
         :short => :a,
-        :description => "Deprovision all selected servers"
+        :description => "Start all selected servers"
 
       def run
         run_for_selected do |id|
