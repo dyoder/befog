@@ -77,12 +77,12 @@ module Befog
       def provision_server
         if options[:spot]
           request = compute.spot_requests.create(
-            :price => price, :instance_count => 1, 
+            :price => price.to_f, :instance_count => 1, 
             :tags => {"Name" => generate_server_name},
             :region => region, :flavor_id => flavor, :image_id => image, 
-            :security_group_ids => security_group, :key_name => keypair)
+            :groups => [ security_group ], :key_name => keypair)
           server = nil
-          Fog.wait_for { server = compute.servers.get(request.reload.instance_id) }
+          Fog.wait_for {(server = compute.servers.get(request.reload.instance_id)) rescue nil}
           server
         else
           compute.servers.create(

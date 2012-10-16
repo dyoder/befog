@@ -90,7 +90,7 @@ module Befog
         end
         
         def price
-          (options[:price] or bank["price"]).to_f or
+          options[:price] or bank["price"] or
             error("Specify a spot instance price with --price or by adding one to the '#{bank_name}' bank.")
         end
         

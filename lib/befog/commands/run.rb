@@ -37,6 +37,7 @@ module Befog
         run_for_selected do |id|
           threads = []; threads << Thread.new do
             safely do
+              # TODO: Add check to see if we have a bad ID in the config
               server = get_server(id)
               if server.state == "running"
                 address = server.public_ip_address
