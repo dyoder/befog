@@ -51,6 +51,10 @@ module Befog
       option :type, 
         :short => :t,
         :description => "The number of machines to provision"
+        
+      option :price,
+        :short => :z,
+        :description => "The spot instance price"
 
       def run
         safely do
@@ -58,7 +62,7 @@ module Befog
             _key = key.to_sym
             provider[key] = options[_key] if options[_key]
           end
-          %w( region image keypair group type ).each do |key|
+          %w( region image keypair group type price ).each do |key|
             _key = key.to_sym
             bank[key] = options[_key] if options[_key]
           end          

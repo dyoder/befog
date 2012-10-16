@@ -89,6 +89,11 @@ module Befog
             error("Specify a keypair with --keypair or by adding one to the '#{bank_name}' bank.")
         end
         
+        def price
+          (options[:price] or bank["price"]).to_f or
+            error("Specify a spot instance price with --price or by adding one to the '#{bank_name}' bank.")
+        end
+        
         def keypair?
           !!options[:keypair] or bank["keypair"]
         end

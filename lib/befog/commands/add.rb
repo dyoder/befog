@@ -30,6 +30,10 @@ module Befog
       option :type, 
         :short => :t,
         :description => "The type of machines to provision"
+        
+      option :spot,
+        :short => :s,
+        :description => "Provision a spot instance"
 
       def run        
         provision_servers(options[:count].to_i)
@@ -71,10 +75,21 @@ module Befog
       end
       
       def provision_server
-        compute.servers.create(
+        if options[:spot]
+          request = compute.spot_requests.create(
+            :price => price, :instance_count => 1, 
             :tags => {"Name" => generate_server_name},
             :region => region, :flavor_id => flavor, :image_id => image, 
             :security_group_ids => security_group, :key_name => keypair)
+          server = nil
+          Fog.wait_for { server = compute.servers.get(request.reload.instance_id) }
+          server
+        else
+          compute.servers.create(
+              :tags => {"Name" => generate_server_name},
+              :region => region, :flavor_id => flavor, :image_id => image, 
+              :security_group_ids => security_group, :key_name => keypair)
+        end
       end
       
       def generate_server_name
