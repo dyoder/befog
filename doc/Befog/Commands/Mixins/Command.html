@@ -6,7 +6,7 @@
 <title>
   Module: Befog::Commands::Mixins::Command
   
-    &mdash; Documentation by YARD 0.7.5
+    &mdash; Documentation by YARD 0.8.3
   
 </title>
 
@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '../../..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../../../_index.html">Index (C)</a> &raquo; 
+    <a href="../../../_index.html">Index (C)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../../Befog.html" title="Befog (module)">Befog</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Commands.html" title="Befog::Commands (module)">Commands</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Mixins.html" title="Befog::Commands::Mixins (module)">Mixins</a></span></span>
      &raquo; 
     <span class="title">Command</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Module: Befog::Commands::Mixins::Command
   
   
@@ -98,7 +105,10 @@
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -141,6 +151,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'></div></span>
@@ -171,6 +182,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'></div></span>
@@ -192,6 +204,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'></div></span>
@@ -207,6 +220,7 @@
 
     
   </span>
+  
   
   
   
@@ -236,6 +250,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'></div></span>
@@ -251,6 +266,7 @@
 
     
   </span>
+  
   
   
   
@@ -280,6 +296,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'></div></span>
@@ -296,15 +313,16 @@
     
       
       <span id=""></span>
-      <span id="options-instance_method"></span>
       <div class="method_details first">
-  <p class="signature first" id="options-instance_method">
+  <h3 class="signature first" id="options-instance_method">
   
     - (<tt>Object</tt>) <strong>options</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>Returns the value of attribute options</p>
@@ -328,10 +346,9 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 33</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_options identifier id'>options</span>
-  <span class='rubyid_@options ivar id'>@options</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='ivar'>@options</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -342,16 +359,18 @@
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="included-class_method">
+  <h3 class="signature first" id="included-class_method">
   
     + (<tt>Object</tt>) <strong>included</strong>(target) 
   
 
   
-</p><table class="source_code">
+
+  
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -385,31 +404,30 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 8</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_included identifier id'>included</span><span class='lparen token'>(</span><span class='rubyid_target identifier id'>target</span><span class='rparen token'>)</span>
-  <span class='rubyid_target identifier id'>target</span><span class='dot token'>.</span><span class='rubyid_module_eval identifier id'>module_eval</span> <span class='rubyid_do do kw'>do</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_included'>included</span><span class='lparen'>(</span><span class='id identifier rubyid_target'>target</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_target'>target</span><span class='period'>.</span><span class='id identifier rubyid_module_eval'>module_eval</span> <span class='kw'>do</span>
     
-    <span class='rubyid_class class kw'>class</span> <span class='lshft op'>&lt;&lt;</span> <span class='rubyid_self self kw'>self</span> 
+    <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span> 
       
-      <span class='rubyid_def def kw'>def</span> <span class='rubyid_command identifier id'>command</span><span class='lparen token'>(</span><span class='rubyid_descriptor identifier id'>descriptor</span><span class='assign token'>=</span><span class='rubyid_nil nil kw'>nil</span><span class='rparen token'>)</span>
-        <span class='rubyid_descriptor identifier id'>descriptor</span> <span class='integer val'>? </span><span class='lparen token'>(</span><span class='rubyid_@command ivar id'>@command</span> <span class='assign token'>=</span> <span class='rubyid_OpenStruct constant id'>OpenStruct</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_descriptor identifier id'>descriptor</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='colon op'>:</span> <span class='rubyid_@command ivar id'>@command</span>
-      <span class='rubyid_end end kw'>end</span>
+      <span class='kw'>def</span> <span class='id identifier rubyid_command'>command</span><span class='lparen'>(</span><span class='id identifier rubyid_descriptor'>descriptor</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_descriptor'>descriptor</span> <span class='op'>?</span> <span class='lparen'>(</span><span class='ivar'>@command</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_descriptor'>descriptor</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='ivar'>@command</span>
+      <span class='kw'>end</span>
       
-      <span class='rubyid_def def kw'>def</span> <span class='rubyid_option identifier id'>option</span><span class='lparen token'>(</span><span class='rubyid_name identifier id'>name</span><span class='comma token'>,</span><span class='rubyid_descriptor identifier id'>descriptor</span><span class='rparen token'>)</span>
-        <span class='rubyid_options identifier id'>options</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrack token'>[</span><span class='rubyid_name identifier id'>name</span><span class='comma token'>,</span><span class='rubyid_descriptor identifier id'>descriptor</span><span class='rbrack token'>]</span>
-      <span class='rubyid_end end kw'>end</span>
+      <span class='kw'>def</span> <span class='id identifier rubyid_option'>option</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_descriptor'>descriptor</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_options'>options</span> <span class='op'>&lt;&lt;</span> <span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_descriptor'>descriptor</span><span class='rbracket'>]</span>
+      <span class='kw'>end</span>
       
-      <span class='rubyid_def def kw'>def</span> <span class='rubyid_options identifier id'>options</span> <span class='semicolon token'>;</span> <span class='rubyid_@options ivar id'>@options</span><span class='opasgn op'>||=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span> <span class='semicolon token'>;</span> <span class='rubyid_end end kw'>end</span>
+      <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span> <span class='semicolon'>;</span> <span class='ivar'>@options</span><span class='op'>||=</span><span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='semicolon'>;</span> <span class='kw'>end</span>
 
-      <span class='rubyid_def def kw'>def</span> <span class='rubyid_run identifier id'>run</span><span class='lparen token'>(</span><span class='rubyid_options identifier id'>options</span><span class='rparen token'>)</span>
-        <span class='rubyid_Befog constant id'>Befog</span><span class='dot token'>.</span><span class='rubyid_show_version identifier id'>show_version</span> <span class='rubyid_if if_mod kw'>if</span> <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:version</span><span class='rbrack token'>]</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:v</span><span class='rbrack token'>]</span>
-        <span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_options identifier id'>options</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rubyid_run identifier id'>run</span>
-      <span class='rubyid_end end kw'>end</span>
+      <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+        <span class='const'>Befog</span><span class='period'>.</span><span class='id identifier rubyid_show_version'>show_version</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:version</span><span class='rbracket'>]</span> <span class='kw'>or</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:v</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span>
+      <span class='kw'>end</span>
       
-    <span class='rubyid_end end kw'>end</span>
+    <span class='kw'>end</span>
     
-  <span class='rubyid_end end kw'>end</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -419,16 +437,18 @@
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="command-instance_method">
+  <h3 class="signature first" id="command-instance_method">
   
     - (<tt>Object</tt>) <strong>command</strong> 
   
 
   
-</p><table class="source_code">
+
+  
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -441,23 +461,24 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 41</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_command identifier id'>command</span>
-  <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_class identifier id'>class</span><span class='dot token'>.</span><span class='rubyid_command identifier id'>command</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_command'>command</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_command'>command</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="error-instance_method">
+  <h3 class="signature " id="error-instance_method">
   
     - (<tt>Object</tt>) <strong>error</strong>(message) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 
@@ -465,7 +486,7 @@
 </div>
 <div class="tags">
   
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -492,23 +513,24 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 77</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_error identifier id'>error</span><span class='lparen token'>(</span><span class='rubyid_message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_CLI constant id'>CLI</span><span class='colon2 op'>::</span><span class='rubyid_Error constant id'>Error</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_message identifier id'>message</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_error'>error</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>CLI</span><span class='op'>::</span><span class='const'>Error</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="initialize-instance_method">
+  <h3 class="signature " id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="Befog::Commands::Mixins::Command (module)">Command</a></span></tt>) <strong>initialize</strong>(_options) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>A new instance of Command</p>
@@ -534,25 +556,26 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 35</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid__options identifier id'>_options</span><span class='rparen token'>)</span>
-  <span class='rubyid_safely identifier id'>safely</span> <span class='rubyid_do do kw'>do</span>
-    <span class='rubyid_@options ivar id'>@options</span> <span class='assign token'>=</span> <span class='rubyid_process_options identifier id'>process_options</span><span class='lparen token'>(</span><span class='rubyid__options identifier id'>_options</span><span class='rparen token'>)</span>
-  <span class='rubyid_end end kw'>end</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid__options'>_options</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_safely'>safely</span> <span class='kw'>do</span>
+    <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_process_options'>process_options</span><span class='lparen'>(</span><span class='id identifier rubyid__options'>_options</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="log-instance_method">
+  <h3 class="signature " id="log-instance_method">
   
     - (<tt>Object</tt>) <strong>log</strong>(message) 
   
 
   
-</p><table class="source_code">
+
+  
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -565,23 +588,24 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 81</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_log identifier id'>log</span><span class='lparen token'>(</span><span class='rubyid_message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='rubyid_$stdout gvar id'>$stdout</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span><span class='lparen token'>(</span><span class='rubyid_message identifier id'>message</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+  <span class='gvar'>$stdout</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="process_options-instance_method">
+  <h3 class="signature " id="process_options-instance_method">
   
     - (<tt>Object</tt>) <strong>process_options</strong>(_options) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 <p>TODO: Support multi-line descriptions?</p>
@@ -618,36 +642,37 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 46</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_process_options identifier id'>process_options</span><span class='lparen token'>(</span><span class='rubyid__options identifier id'>_options</span><span class='rparen token'>)</span>
-  <span class='rubyid_if if kw'>if</span> <span class='lparen token'>(</span><span class='rubyid_command identifier id'>command</span><span class='dot token'>.</span><span class='rubyid_default_to_help identifier id'>default_to_help</span> <span class='rubyid_and and kw'>and</span> <span class='rubyid__options identifier id'>_options</span><span class='dot token'>.</span><span class='rubyid_empty? fid id'>empty?</span><span class='rparen token'>)</span> <span class='rubyid_or or kw'>or</span> <span class='rubyid__options identifier id'>_options</span><span class='lbrack token'>[</span><span class='symbol val'>:help</span><span class='rbrack token'>]</span>
-    <span class='rubyid_usage identifier id'>usage</span>
-    <span class='rubyid_exit identifier id'>exit</span><span class='lparen token'>(</span><span class='integer val'>0</span><span class='rparen token'>)</span>
-  <span class='rubyid_end end kw'>end</span>
-  <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_class identifier id'>class</span><span class='dot token'>.</span><span class='rubyid_options identifier id'>options</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_name identifier id'>name</span><span class='comma token'>,</span><span class='rubyid_descriptor identifier id'>descriptor</span><span class='bitor op'>|</span>
-    <span class='rubyid_short identifier id'>short</span><span class='comma token'>,</span> <span class='rubyid_required identifier id'>required</span><span class='comma token'>,</span> <span class='rubyid_default identifier id'>default</span><span class='comma token'>,</span> <span class='rubyid_type identifier id'>type</span> <span class='assign token'>=</span> <span class='rubyid_descriptor identifier id'>descriptor</span><span class='dot token'>.</span><span class='rubyid_values_at identifier id'>values_at</span><span class='lparen token'>(</span><span class='symbol val'>:short</span><span class='comma token'>,</span><span class='symbol val'>:required</span><span class='comma token'>,</span><span class='symbol val'>:default</span><span class='comma token'>,</span><span class='symbol val'>:type</span><span class='rparen token'>)</span>
-    <span class='rubyid__options identifier id'>_options</span><span class='lbrack token'>[</span><span class='rubyid_name identifier id'>name</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lparen token'>(</span><span class='rubyid__options identifier id'>_options</span><span class='lbrack token'>[</span><span class='rubyid_short identifier id'>short</span><span class='rbrack token'>]</span><span class='orop op'>||</span><span class='rubyid_default identifier id'>default</span><span class='rparen token'>)</span>
-    <span class='rubyid__options identifier id'>_options</span><span class='dot token'>.</span><span class='rubyid_delete identifier id'>delete</span><span class='lparen token'>(</span><span class='rubyid_short identifier id'>short</span><span class='rparen token'>)</span>
-    <span class='rubyid_if if kw'>if</span> <span class='rubyid_required identifier id'>required</span> <span class='rubyid_and and kw'>and</span> <span class='rubyid_not not kw'>not</span> <span class='rubyid__options identifier id'>_options</span><span class='lbrack token'>[</span><span class='rubyid_name identifier id'>name</span><span class='rbrack token'>]</span>
-      <span class='rubyid_error identifier id'>error</span><span class='lparen token'>(</span><span class='dstring node'>&quot;Missing required option --#{name}&quot;</span><span class='rparen token'>)</span>
-    <span class='rubyid_end end kw'>end</span>
-  <span class='rubyid_end end kw'>end</span>
-  <span class='comment val'># TODO: add type conversion</span>
-  <span class='rubyid_return return kw'>return</span> <span class='rubyid__options identifier id'>_options</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_process_options'>process_options</span><span class='lparen'>(</span><span class='id identifier rubyid__options'>_options</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='period'>.</span><span class='id identifier rubyid_default_to_help'>default_to_help</span> <span class='kw'>and</span> <span class='id identifier rubyid__options'>_options</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id identifier rubyid__options'>_options</span><span class='lbracket'>[</span><span class='symbol'>:help</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_usage'>usage</span>
+    <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_descriptor'>descriptor</span><span class='op'>|</span>
+    <span class='id identifier rubyid_short'>short</span><span class='comma'>,</span> <span class='id identifier rubyid_required'>required</span><span class='comma'>,</span> <span class='id identifier rubyid_default'>default</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='id identifier rubyid_descriptor'>descriptor</span><span class='period'>.</span><span class='id identifier rubyid_values_at'>values_at</span><span class='lparen'>(</span><span class='symbol'>:short</span><span class='comma'>,</span><span class='symbol'>:required</span><span class='comma'>,</span><span class='symbol'>:default</span><span class='comma'>,</span><span class='symbol'>:type</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid__options'>_options</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lparen'>(</span><span class='id identifier rubyid__options'>_options</span><span class='lbracket'>[</span><span class='id identifier rubyid_short'>short</span><span class='rbracket'>]</span><span class='op'>||</span><span class='id identifier rubyid_default'>default</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid__options'>_options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_short'>short</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_required'>required</span> <span class='kw'>and</span> <span class='kw'>not</span> <span class='id identifier rubyid__options'>_options</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_error'>error</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Missing required option --</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='comment'># TODO: add type conversion
+</span>  <span class='kw'>return</span> <span class='id identifier rubyid__options'>_options</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="usage-instance_method">
+  <h3 class="signature " id="usage-instance_method">
   
     - (<tt>Object</tt>) <strong>usage</strong> 
   
 
   
-</p><table class="source_code">
+
+  
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -668,18 +693,17 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/befog/commands/mixins/command.rb', line 63</span>
 
-<span class='rubyid_def def kw'>def</span> <span class='rubyid_usage identifier id'>usage</span>
-  <span class='rubyid_$stderr gvar id'>$stderr</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span> <span class='rubyid_command identifier id'>command</span><span class='dot token'>.</span><span class='rubyid_usage identifier id'>usage</span>
-  <span class='rubyid_usage identifier id'>usage</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-  <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_class identifier id'>class</span><span class='dot token'>.</span><span class='rubyid_options identifier id'>options</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_name identifier id'>name</span><span class='comma token'>,</span><span class='rubyid_descriptor identifier id'>descriptor</span><span class='bitor op'>|</span>
-    <span class='rubyid_short identifier id'>short</span><span class='comma token'>,</span> <span class='rubyid_required identifier id'>required</span><span class='comma token'>,</span> <span class='rubyid_default identifier id'>default</span><span class='comma token'>,</span> <span class='rubyid_description identifier id'>description</span> <span class='assign token'>=</span> <span class='rubyid_descriptor identifier id'>descriptor</span><span class='dot token'>.</span><span class='rubyid_values_at identifier id'>values_at</span><span class='lparen token'>(</span><span class='symbol val'>:short</span><span class='comma token'>,</span><span class='symbol val'>:required</span><span class='comma token'>,</span><span class='symbol val'>:default</span><span class='comma token'>,</span><span class='symbol val'>:description</span><span class='rparen token'>)</span>
-    <span class='rubyid_required identifier id'>required</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='rubyid_required identifier id'>required</span> <span class='integer val'>? </span><span class='string val'>&quot;(required) &quot;</span> <span class='colon op'>:</span> <span class='string val'>&quot;&quot;</span><span class='rparen token'>)</span>
-    <span class='rubyid_default identifier id'>default</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='rubyid_default identifier id'>default</span> <span class='integer val'>? </span><span class='dstring node'>&quot;(default: #{default}) &quot;</span> <span class='colon op'>:</span> <span class='string val'>&quot;&quot;</span><span class='rparen token'>)</span>
-    <span class='rubyid_usage identifier id'>usage</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;\t%-3s %-20s\t%-40s&quot;</span> <span class='mod op'>%</span> <span class='lbrack token'>[</span><span class='dstring node'>&quot;-#{short},&quot;</span><span class='comma token'>,</span> <span class='dstring node'>&quot;--#{name} #{name.to_s.upcase}&quot;</span><span class='comma token'>,</span> <span class='dstring node'>&quot;#{description} #{required}#{default}&quot;</span><span class='rbrack token'>]</span>
-  <span class='rubyid_end end kw'>end</span>
-  <span class='rubyid_$stderr gvar id'>$stderr</span><span class='dot token'>.</span><span class='rubyid_puts identifier id'>puts</span> <span class='mult op'>*</span><span class='lparen token'>(</span><span class='rubyid_usage identifier id'>usage</span><span class='dot token'>.</span><span class='rubyid_sort identifier id'>sort</span><span class='rparen token'>)</span>
-<span class='rubyid_end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_usage'>usage</span>
+  <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_command'>command</span><span class='period'>.</span><span class='id identifier rubyid_usage'>usage</span>
+  <span class='id identifier rubyid_usage'>usage</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_descriptor'>descriptor</span><span class='op'>|</span>
+    <span class='id identifier rubyid_short'>short</span><span class='comma'>,</span> <span class='id identifier rubyid_required'>required</span><span class='comma'>,</span> <span class='id identifier rubyid_default'>default</span><span class='comma'>,</span> <span class='id identifier rubyid_description'>description</span> <span class='op'>=</span> <span class='id identifier rubyid_descriptor'>descriptor</span><span class='period'>.</span><span class='id identifier rubyid_values_at'>values_at</span><span class='lparen'>(</span><span class='symbol'>:short</span><span class='comma'>,</span><span class='symbol'>:required</span><span class='comma'>,</span><span class='symbol'>:default</span><span class='comma'>,</span><span class='symbol'>:description</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_required'>required</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_required'>required</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(required) </span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_default'>default</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_default'>default</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(default: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_default'>default</span><span class='rbrace'>}</span><span class='tstring_content'>) </span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_usage'>usage</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\t%-3s %-20s\t%-40s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_short'>short</span><span class='rbrace'>}</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>--</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_description'>description</span><span class='rbrace'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_required'>required</span><span class='rbrace'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_default'>default</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+  <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_usage'>usage</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -688,11 +712,11 @@
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Tue Sep 11 19:27:12 2012 by 
+  Generated on Mon Nov 12 15:39:10 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.8.7).
+  0.8.3 (ruby-1.9.3).
 </div>
 
   </body>

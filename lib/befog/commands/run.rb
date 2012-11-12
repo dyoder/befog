@@ -47,8 +47,9 @@ module Befog
         else
           raise "Must specify one of --shell or --command"
         end
+        threads = []
         run_for_selected do |id|
-          threads = []; threads << Thread.new do
+          threads << Thread.new do
             safely do
               # TODO: Add check to see if we have a bad ID in the config
               server = get_server(id)
@@ -63,8 +64,8 @@ module Befog
               end
             end
           end
-          sleep 1 while threads.any? { |t| t.alive? }
         end
+        sleep 1 while threads.any? { |t| t.alive? }
       end
 
     end
