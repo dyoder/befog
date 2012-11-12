@@ -25,8 +25,11 @@ module Befog
 
       option :command, 
         :short => :c,
-        :required => true,
-        :description => "Command to run (required)"
+        :description => "Command to run"
+      
+      option :shell,
+        :short => :y,
+        :description => "Shell script to run remotely"
     
       option :all,
         :short => :a,
@@ -34,6 +37,16 @@ module Befog
 
     
       def run
+        script = if options[:command] and not options[:shell]
+          $stdout.puts "Running command '#{options[:command]}' ..."
+          options[:command]
+        elsif options[:shell] and not options[:command]
+          $stdout.puts "Running script '#{options[:shell]}' ..."
+          # We add the sleep in case the last command is run in the bg
+          File.open options[:shell] { |file| file.read + "\nsleep 1"}
+        else
+          raise "Must specify one of --shell or --command"
+        end
         run_for_selected do |id|
           threads = []; threads << Thread.new do
             safely do
@@ -41,8 +54,8 @@ module Befog
               server = get_server(id)
               if server.state == "running"
                 address = server.public_ip_address
-                $stdout.puts "Running command '#{options[:command]}' for #{address} ..."
-                result = Fog::SSH.new(address, "root").run(options[:command]).first
+                $stdout.puts "... for '#{address}'"
+                result = Fog::SSH.new(address, "root").run(script).first
                 $stdout.puts "#{address} STDOUT: #{result.stdout}"
                 $stderr.puts "#{address} STDERR: #{result.stderr}" unless result.stderr.empty?
               else
