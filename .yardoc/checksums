@@ -1,7 +1,7 @@
 lib/befog.rb bb83331083ea414d73e1fe2b76df287bcd81c16c
 lib/befog/cli.rb 3218ec33a78761f6d0b9506fc6f3c8d8c778b34c
 lib/befog/commands.rb bc9a04ea7edc827f6ec4f2712a750d72c9521b20
-lib/befog/commands/run.rb 78aca1f619f6fb07741263b100fc7712dbe0cf30
+lib/befog/commands/run.rb 023e0f1247e1e3b430ea4bab1c31e30f0e9adf20
 lib/befog/commands/add.rb c46ced6b27e5dfffec9c5df9eb115fb1381446fd
 lib/befog/commands/list.rb 346efb27e90caad7d99010f7ce9989898689bc98
 lib/befog/commands/stop.rb 79515c65f4a98cce212a43061399eb6a0689ff57

@@ -1,13 +1,4 @@
 #!/usr/bin/env ruby
-require "rubygems"
 
-# resolve bin path, ignoring symlinks
-require "pathname"
-bin_file = Pathname.new(__FILE__).realpath
-
-# add self to libpath
-$:.unshift File.expand_path("../../lib", bin_file)
-
-require "befog"
-
+require_relative "../lib/befog"
 Befog::CLI.run(ARGV)

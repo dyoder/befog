@@ -270,7 +270,8 @@
 65
 66
 67
-68</pre>
+68
+69</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/befog/commands/run.rb', line 39</span>
@@ -286,8 +287,9 @@
   <span class='kw'>else</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Must specify one of --shell or --command</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
+  <span class='id identifier rubyid_threads'>threads</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_run_for_selected'>run_for_selected</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_id'>id</span><span class='op'>|</span>
-    <span class='id identifier rubyid_threads'>threads</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='semicolon'>;</span> <span class='id identifier rubyid_threads'>threads</span> <span class='op'>&lt;&lt;</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_threads'>threads</span> <span class='op'>&lt;&lt;</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span>
       <span class='id identifier rubyid_safely'>safely</span> <span class='kw'>do</span>
         <span class='comment'># TODO: Add check to see if we have a bad ID in the config
 </span>        <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='id identifier rubyid_get_server'>get_server</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
@@ -302,8 +304,8 @@
         <span class='kw'>end</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
-    <span class='id identifier rubyid_sleep'>sleep</span> <span class='int'>1</span> <span class='kw'>while</span> <span class='id identifier rubyid_threads'>threads</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_alive?'>alive?</span> <span class='rbrace'>}</span>
   <span class='kw'>end</span>
+  <span class='id identifier rubyid_sleep'>sleep</span> <span class='int'>1</span> <span class='kw'>while</span> <span class='id identifier rubyid_threads'>threads</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_alive?'>alive?</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -315,7 +317,7 @@
 </div>
 
     <div id="footer">
-  Generated on Mon Nov 12 15:39:10 2012 by
+  Generated on Mon Nov 12 15:45:32 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.3 (ruby-1.9.3).
 </div>

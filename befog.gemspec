@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.authors     = $authors
   s.email       = $emails
   s.require_path = "lib"
-  s.files       = Dir["lib/befog/**/*.rb"] + %w[lib/befog.rb] + %w[bin/befog]
+  s.files       = Dir["lib/befog/**/*.rb"] + %w[lib/befog.rb] + %w[bin/befog] + %w[ VERSION AUTHORS Readme.md]
   s.bindir      = "bin"
   s.executables << "befog"
   s.default_executable = "befog"
